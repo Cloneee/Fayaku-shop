@@ -16,10 +16,7 @@ const ProductSchema = mongoose.Schema({
     sale:{
         type: Number,
     },
-    image: {
-        type: String,
-        required: true
-    },
+    image:[String],
     available:{
         type: Boolean
     }

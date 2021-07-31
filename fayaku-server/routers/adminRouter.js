@@ -9,6 +9,9 @@ Router.post('/addproduct', async (req, res) => {
     if (_.isEmpty(data)) {
         res.status(400).json({ code: 0, message: 'Make sure you type it all' })
     } else {
+        let tempImg = data.image
+        let imgArr = tempImg.split(',')
+        data.image = imgArr
         await ProductModels.create(data, (err) => {
             if (err) {
                 console.log(err)
