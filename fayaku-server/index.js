@@ -9,7 +9,7 @@ require('dotenv/config')
 
 const adminRouter = require('./routers/adminRouter')
 const userRouter = require('./routers/userRouter')
-const indexRouter = require('./routers/indexRouter')
+const apiRouter = require('./routers/apiRouter')
 
 port = process.env.PORT || 8000
 //Setup database
@@ -26,7 +26,7 @@ app.use(express.json())
 app.use(passport.initialize())
 app.use(cookieParser());
 
-app.use('/api', indexRouter)
+app.use('/api', apiRouter)
 app.use('/admin', adminRouter)
 app.use('/user', userRouter)
 
