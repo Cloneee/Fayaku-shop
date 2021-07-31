@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllSuppliers } from '../../redux/action/user/userSupplier';
-import { addProduct } from '../../redux/action/admin/actProduct';
+import { updateProduct } from '../../redux/action/admin/actProduct';
 const FormUpdatePoduct = (props) => {
     const dispatch = useDispatch();
     const product = props.product
@@ -25,7 +25,7 @@ const FormUpdatePoduct = (props) => {
 
         console.log(product)
         dispatch(
-            addProduct(
+            updateProduct(
                 product
             )
         )

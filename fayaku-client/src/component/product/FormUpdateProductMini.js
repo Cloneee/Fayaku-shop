@@ -3,7 +3,7 @@ import { Formik, Form, useField } from 'formik';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllSuppliers } from '../../redux/action/user/userSupplier';
-import { addProduct } from '../../redux/action/admin/actProduct';
+import { updateProduct } from '../../redux/action/admin/actProduct';
 import * as Yup from 'yup';
 import Select from '../customForm/Select';
 import Input from '../customForm/Input';
@@ -44,7 +44,7 @@ const FormUpdatePoductMini = (props) => {
 
         console.log(product)
         dispatch(
-            addProduct(
+            updateProduct(
                 product
             )
         )

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { SET_ALL_PRODUCTS,SET_ONE_PRODUCT ,SET_MESSAGE_ADD_PRODUCT} from "../../constants/types";
+import { ONE_PRODUCT_API,ALL_PRODUCT_API } from "../../constants/api";
 export const setOneProductToStore = (product) => {
     console.log("set to store")
     return {
@@ -9,7 +10,7 @@ export const setOneProductToStore = (product) => {
 };
 export const getOneProduct = (id) => {
     
-    const url = "http://localhost:8080/projectperfume/api/product/"+id;
+    const url = ONE_PRODUCT_API +id;
     return (dispatch) => {
         return axios
             .get(url)
@@ -30,7 +31,7 @@ export const setAllProductsToStore = (products) => {
     };
 };
 export const getAllProducts = () => {
-    const url = "http://localhost:8080/projectperfume/api/products";
+    const url = ALL_PRODUCT_API;
     return (dispatch) => {
         return axios
             .get(url)
@@ -43,8 +44,8 @@ export const getAllProducts = () => {
             });
     };
 };
-export const addProduct = (product) => {
-    const url = "http://localhost:8080/projectperfume/api/product";
+export const updateProduct = (product) => {
+    const url = ONE_PRODUCT_API;
     return (dispatch) => {
         return axios
             .put(url,product)
