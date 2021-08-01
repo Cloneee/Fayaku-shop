@@ -19,7 +19,8 @@ const ProductSchema = mongoose.Schema({
     image:[String],
     available:{
         type: Boolean
-    }
+    },
+    description: String
 })
 
 module.exports = mongoose.model('Product', ProductSchema)

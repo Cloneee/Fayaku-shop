@@ -1,20 +1,26 @@
 GET http://localhost:8000/api/products
 
 ###
+GET http://localhost:8000/api/products?limit=2&category=1/7
+
+###
 GET http://localhost:8000/api/products
     ?limit=30
 
 ###
-POST http://localhost:8000/api/addproduct
+POST http://localhost:8000/api/product
 Content-Type: application/x-www-form-urlencoded
 
 ###
-POST http://localhost:8000/admin/addproduct
+POST http://localhost:8000/api/product
 Content-Type: application/x-www-form-urlencoded
 
-name=アサシン/オキタ・J・ソウジ
-&category=1/7
-&price=248000
+name=エレン・イェーガー 進撃の巨人
+&category=POP UP PARADE
+&price=3900
 &sale=1
-&image=https://images.goodsmile.info/cgm/images/product/20210615/11351/85894/large/ba43334267f21b3f7f139f38a605c22b.jpg,https://images.goodsmile.info/cgm/images/product/20210615/11351/85895/large/8e0ad8a2bfa76b6a84a1008f67ff3faf.jpg,https://images.goodsmile.info/cgm/images/product/20210615/11351/85897/large/ed001461e2b2ce8debc6a68783082df7.jpg,https://images.goodsmile.info/cgm/images/product/20210615/11351/85898/large/ad786e72257d3f61a11bd5dfbd4bb036.jpg,https://images.goodsmile.info/cgm/images/product/20210615/11351/87747/large/00644701a1dbe600620976a68ee11c08.jpg,https://images.goodsmile.info/cgm/images/product/20210615/11351/87748/large/fbcf47dbcae8270c3925208994fa93f0.jpg,https://images.goodsmile.info/cgm/images/product/20210615/11351/87749/large/db5db7daeb34c4d121b481509bd8d183.jpg,https://images.goodsmile.info/cgm/images/product/20210615/11351/87750/large/a508da36475bae6c51b38e210c9ebf41.jpg
+&image=https://images.goodsmile.info/cgm/images/product/20210728/11569/87905/large/3699562486a7e92d8afc5ba63ec22c8c.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11569/87906/large/872bd3d877f8ebcfc37efe9c57c7d3a8.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11569/87907/large/f9a5267debdbd2db0dd5bd38f7e5f242.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11569/87908/large/852c26fd8b4262cd098b33a3d444ad20.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11569/87909/large/988b833de94c7dc1486654db556d0eee.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11569/87910/large/090406a71850e9c810b02a2f1f8de9e6.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11569/87911/large/3ed4683dbc7a63953d9d7eeb51d5fe5c.jpg
 &available=true
+
+###
+GET http://localhost:8000/api/product/6105a89943165e07387979e8
