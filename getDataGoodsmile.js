@@ -13,7 +13,7 @@ const copyToClipboard = str => {
 const getData = () => {
     let imgString = ''
     $('img[class=itemImg]').each((i,v)=>{
-        if (i==1){
+        if (i==0){
             imgString = v.src
         } else{
             imgString = imgString + ',' + v.src

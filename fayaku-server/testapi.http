@@ -15,7 +15,7 @@ Content-Type: application/x-www-form-urlencoded
 POST http://localhost:8000/api/product
 Content-Type: application/x-www-form-urlencoded
 
-name=POP UP PARADE シモン  (ぽっぷあっぷぱれーど しもん)&producer=グッドスマイルカンパニー&category=POP UP PARADE&price=3900&image=https://images.goodsmile.info/cgm/images/product/20210728/11570/87915/large/5e95a9d06ff84e494e2d434bb8f6c56f.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11570/87916/large/fe6750b911fbb0754fffff1e96c83a90.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11570/87917/large/73752ac488a5068e888177af4dfb319a.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11570/87918/large/7db7dfbeef89ff098224c0916b89bfc9.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11570/87919/large/f3d03100564a05adf680d79dae514504.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11570/87920/large/338ee10d18388160825a4d452fb3a222.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11570/87921/large/0e7e99afff9e90263fa92c6cb65762e3.jpg
+
 
 ###
 GET http://localhost:8000/api/product/6105a89943165e07387979e8
