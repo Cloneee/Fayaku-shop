@@ -5,7 +5,7 @@ GET http://localhost:8000/api/products?limit=2&category=1/7
 
 ###
 GET http://localhost:8000/api/products
-    ?limit=30
+    ?limit=1
 
 ###
 POST http://localhost:8000/api/product
@@ -20,7 +20,24 @@ name=エレン・イェーガー 進撃の巨人
 &price=3900
 &sale=1
 &image=https://images.goodsmile.info/cgm/images/product/20210728/11569/87905/large/3699562486a7e92d8afc5ba63ec22c8c.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11569/87906/large/872bd3d877f8ebcfc37efe9c57c7d3a8.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11569/87907/large/f9a5267debdbd2db0dd5bd38f7e5f242.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11569/87908/large/852c26fd8b4262cd098b33a3d444ad20.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11569/87909/large/988b833de94c7dc1486654db556d0eee.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11569/87910/large/090406a71850e9c810b02a2f1f8de9e6.jpg,https://images.goodsmile.info/cgm/images/product/20210728/11569/87911/large/3ed4683dbc7a63953d9d7eeb51d5fe5c.jpg
-&available=true
+&status=1
 
 ###
 GET http://localhost:8000/api/product/6105a89943165e07387979e8
+
+###
+POST http://localhost:8000/user/register
+Content-Type: application/x-www-form-urlencoded
+
+email=example@gmail.com
+&password=123456789
+&fullname=Nguyen Thanh Huy
+&sex=male
+&phone=0907579269
+
+###
+POST http://localhost:8000/user/login
+Content-Type: application/x-www-form-urlencoded
+
+email=example@gmail.com
+&password=123456789

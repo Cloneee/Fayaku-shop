@@ -1,27 +1,28 @@
 const mongoose = require('mongoose')
 
 const UserSchema = mongoose.Schema({
-    username: {
+    email:{
         type: String,
-        required: true
+        unique: true,
+        validate: /.+\@.+\..+/
+    },
+    phone: {
+        type: String,
+        required: true,
+        validate: /^\d{10}$/
     },
     password:{
         type: String,
         required: true
     },
-    name: {
+    fullname: {
         type: String,
         required: true
     },
     sex: {
         type: String,
         required: true,
-        enum: ['male', 'female']
-    },
-    email:{
-        type: String,
-        unique: true,
-        match: /.+\@.+\..+/
+        enum: ['male', 'female', 'other']
     },
     avatar:{
         type: String,
@@ -34,6 +35,7 @@ const UserSchema = mongoose.Schema({
     role: {
         type: String,
         required: true,
+        enum: ['admin', 'user'],
         default: 'user'
     },
     addressList:[{

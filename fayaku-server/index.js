@@ -20,7 +20,7 @@ const uri = 'mongodb+srv://user:user@learningmongo1.89tk5.gcp.mongodb.net/fayaku
 mongoose.Promise = global.Promise
 mongoose.set('useFindAndModify', false);
 const db = mongoose.connection
-mongoose.connect(process.env.DB_CONNECTION || uri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.DB_CONNECTION || uri, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useCreateIndex: true })
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 //End DB Section
 
@@ -33,12 +33,12 @@ app.use('/api', apiRouter)
 app.use('/admin', adminRouter)
 app.use('/user', userRouter)
 
-app.get('/', (req,res)=>{
+app.get('/', (req, res) => {
     res.send('Welcome to Fayaku Shop')
 })
 
-app.use((req,res)=>{
-    res.status(404).json({code:404, message: 'API not found'})
+app.use((req, res) => {
+    res.status(404).json({ code: 404, message: 'API not found' })
 })
 
 app.listen(port, () => {
