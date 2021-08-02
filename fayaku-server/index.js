@@ -11,7 +11,7 @@ require('dotenv/config')
 app.use(cors())
 
 const adminRouter = require('./routers/adminRouter')
-const userRouter = require('./routers/userRouter')
+const authRouter = require('./routers/authRouter')
 const apiRouter = require('./routers/apiRouter')
 
 port = process.env.PORT || 8000
@@ -31,7 +31,7 @@ app.use(cookieParser());
 
 app.use('/api', apiRouter)
 app.use('/admin', adminRouter)
-app.use('/user', userRouter)
+app.use('/auth', authRouter)
 
 app.get('/', (req, res) => {
     res.send('Welcome to Fayaku Shop')
