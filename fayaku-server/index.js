@@ -4,8 +4,11 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const passport = require('passport')
 const cookieParser = require('cookie-parser')
+const cors = require('cors')
 
 require('dotenv/config')
+
+app.use(cors())
 
 const adminRouter = require('./routers/adminRouter')
 const userRouter = require('./routers/userRouter')
