@@ -2,9 +2,11 @@ import Header from "./component/Header";
 import routes from "./routes";
 import Footer from "./component/Footer";
 import "./assets/css/product.css"
+import 'antd/dist/antd.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import HomePageAdmin from "./component/admin/HomePage/HomePageAdmin";
 function App() {
-
+ 
   const maproutes = routes.map((route, index) => {
     return (
       <Route key={index}
@@ -23,7 +25,10 @@ function App() {
       <br></br>
     
       <Footer/>
+      
+     
       </div>
+      
     </div>
     </Router>
   );

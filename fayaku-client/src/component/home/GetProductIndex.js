@@ -40,7 +40,7 @@ const GetProductIndex = () => {
                     </ul>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Chào mừng đến với thế giới nước hoa của TK Shop</h5>
+                    <h5 class="card-title">Fayaku Shop</h5>
                     <p class="card-text">
                         With supporting text below as a natural lead-in to additional content.
                     </p>

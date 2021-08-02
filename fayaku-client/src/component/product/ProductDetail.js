@@ -25,7 +25,7 @@ const ProductDetail = () => {
             <div className="row" >
                 <div className="col-12  text-center bg-light">
                     <br></br>
-                    <strong>TK'Shop <i class="fas fa-angle-right"></i> Đặt hàng <i class="fas fa-angle-right"></i> {product.productName}</strong>
+                    <strong>TK'Shop <i class="fas fa-angle-right"></i> Đặt hàng <i class="fas fa-angle-right"></i> {product.name}</strong>
 
                 </div>
                 <div className="col-lg-3 col-sm-4 gap-3">
