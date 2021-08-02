@@ -17,6 +17,7 @@ const ProductSchema = mongoose.Schema({
     },
     sale:{
         type: Number,
+        default: 1
     },
     image:[String],
     status: Number,
