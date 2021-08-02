@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllProducts } from '../../redux/action/admin/actProduct'
 import { getOneProduct } from '../../redux/action/admin/actProduct';
-
 const GetProduct = () => {
     const history = useHistory();
     const dispatch = useDispatch();
@@ -41,6 +40,7 @@ const GetProduct = () => {
         setindexMouse(id)
     }
     let mapproducts = listProductsFromStore.map((product, index) => {
+        console.log(product.image[1].naturalWidth)
         let nf = new Intl.NumberFormat();
         let price = nf.format(product.price);
 
@@ -51,11 +51,11 @@ const GetProduct = () => {
 
                 <img
                     src={product.image[1]}
-                    class="card-img-top"
+                    class="card-img-top imgproduct"
                     alt="..."
                 />
                 <div class="card-body">
-                    <h5 class="card-text"><em><strong>{product.name}</strong></em></h5>
+                    <h5 class="card-text "><em><strong>{product.name}</strong></em></h5>
                     <div className="">
                         <div class="">
                             <p>
