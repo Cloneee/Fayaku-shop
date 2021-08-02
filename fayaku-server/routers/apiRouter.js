@@ -23,7 +23,7 @@ Router.get('/products', async (req, res) => {
     }
     return res.status(200).json(products)
 })
-
+    
 Router.get('/products/:id', async (req,res) => {
     const { id } = req.params
     let product = await ProductModels.findById(id)
