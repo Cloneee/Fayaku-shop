@@ -42,7 +42,7 @@ const GetProduct = () => {
     }
     let mapproducts = listProductsFromStore.map((product, index) => {
         let nf = new Intl.NumberFormat();
-        let price = nf.format(product.sellPrice);
+        let price = nf.format(product.price);
 
         return <div className="col-lg-3 col-sm-4 d-flex ">
             <div class={indexMouse === index ? "card  hover-shadow " : "card  shadow-3"} onMouseEnter={() => mouseEnterOnProduct(index)}>
@@ -50,23 +50,23 @@ const GetProduct = () => {
                 {/* <div class="card-header text-center"><em><strong>NAME OF PRODUCT</strong></em></div> */}
 
                 <img
-                    src={product.image}
+                    src={product.image[1]}
                     class="card-img-top"
                     alt="..."
                 />
                 <div class="card-body">
-                    <h5 class="card-text"><em><strong>{product.productName}</strong></em></h5>
+                    <h5 class="card-text"><em><strong>{product.name}</strong></em></h5>
                     <div className="">
                         <div class="">
                             <p>
                                 <strong className="text-danger">{price} VNĐ</strong>
                                 <br></br>
-                                <strong >Đã bán: {product.selledQTT}</strong>
+                                <strong >Đã bán: {product.sale}</strong>
                                 <br></br>
                             </p>
                         </div>
                         <div className = "">
-                            <div class="btn btn-danger w-50 " key={index} onClick={() => productOnClick(product.productId)}><i class="fas fa-shopping-bag" ></i> Mua</div>
+                            <div class="btn btn-danger w-50 " key={index} onClick={() => productOnClick(product._id)}><i class="fas fa-shopping-bag" ></i> Mua</div>
                             <div class="btn btn-dark w-50 " onClick={() => updateProductOnClick(product.productId)}><i class="fas fa-edit"></i> Chỉnh sửa</div>
                         </div>
 
@@ -85,6 +85,7 @@ const GetProduct = () => {
         <div className="container">
             <div class="row gy-3">
                 {mapproducts}
+                {listProductsFromStore.length}
 
             </div>
         </div>
