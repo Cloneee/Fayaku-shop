@@ -9,6 +9,8 @@ const ProductSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    brand: String,
+    suppiler: String,
     price: {
         type: Number,
         required: true
@@ -17,10 +19,12 @@ const ProductSchema = mongoose.Schema({
         type: Number,
     },
     image:[String],
-    available:{
-        type: Boolean
+    status: Number,
+    description: String,
+    rating:{
+        type: [Number],
+        enum: [1,2,3,4,5]
     },
-    description: String
 })
 
 module.exports = mongoose.model('Product', ProductSchema)

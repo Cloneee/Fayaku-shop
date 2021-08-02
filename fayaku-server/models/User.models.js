@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const ProductSchema = mongoose.Schema({
+const UserSchema = mongoose.Schema({
     username: {
         type: String,
         required: true
@@ -9,8 +9,19 @@ const ProductSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    name: {
+        type: String,
+        required: true
+    },
+    sex: {
+        type: String,
+        required: true,
+        enum: ['male', 'female']
+    },
     email:{
-        type: String
+        type: String,
+        unique: true,
+        match: /.+\@.+\..+/
     },
     avatar:{
         type: String,
@@ -19,7 +30,17 @@ const ProductSchema = mongoose.Schema({
     cart:[{
         productId: String,
         quantity: Number
+    }],
+    role: {
+        type: String,
+        required: true,
+        default: 'user'
+    },
+    addressList:[{
+        name: String,
+        phone: String,
+        address: String
     }]
 })
 
-module.exports = mongoose.model('Product', ProductSchema)
+module.exports = mongoose.model('User', UserSchema)
