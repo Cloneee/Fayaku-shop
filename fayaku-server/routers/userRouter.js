@@ -6,6 +6,10 @@ const bcrypt = require('bcrypt')
 
 const UserModel = require('../models/User.model')
 
+function genJWT (email){
+    return jwt.sign({email}, process.env.JWT_SECRET, {expiresIn: '1800s'})
+}
+
 Router.post('/register', async (req, res) => {
     let { email, password, fullname, sex, phone } = req.body
     UserModel.exists({ email: email })
@@ -40,7 +44,9 @@ Router.post('/login', async (req, res) => {
                 bcrypt.compare(password, doc.password)
                     .then((isEqual)=>{
                         if (isEqual){
-                            res.status(200).json({code: 1, message: 'Login success'})
+                            let jwt = genJWT(email)
+                            let rt = 'refresh token placeholder'
+                            res.status(200).json({code: 1, message: 'Login success', jwt: jwt, rt: rt})
                         } else {
                             res.status(406).json({code: 0, message: 'Wrong password, please try again'})
                         }
