@@ -8,23 +8,41 @@ Router.get('/', (req, res) => {
 })
 
 Router.get('/products', async (req, res) => {
-    let { limit, category } = req.query
-    let products
-    if (limit != undefined) {
-        limit = _.toNumber(limit)
-    } else {
-        limit = 20
+    // Filter: limit, category, brand, suppiler, pricemin, pricemax, status, ratingmin, ratingmax
+    let query = req.query
+    let filter = {}
+    let limit = query.limit? _.toNumber(query.limit) : 20,
+        pricemin = query.pricemin? query.pricemin : 0 ,
+        pricemax = query.pricemax? query.pricemax : 100000000,
+        ratingmin = query.ratingmin? query.ratingmin : 1,
+        ratingmax = query.ratingmax? query.ratingmax : 5
+
+    for (prop in query) {
+        //check exists query
+        if (query[prop]){ 
+            //check exclude filter
+            switch (prop){
+                case 'limit':
+                case 'pricemin':
+                case 'pricemax':
+                case 'ratingmin':
+                case 'ratingmax':
+                    break
+                default:
+                    filter[prop] = query[prop]
+                    console.log(`${prop}: ${query[prop]}`)
+            }
+        }
     }
-    if (category != undefined){
-        products = await ProductModel.find({category: category}).sort({_id:-1}).limit(limit)
-    }
-    else{
-        products = await ProductModel.find().sort({_id:-1}).limit(limit)
-    }
+
+    let products = await ProductModel.find(filter)
+        .sort({ _id: -1 }).limit(limit)
+        .where('price').gte(pricemin).lte(pricemax)
+        .where('avrating').gte(ratingmin).lte(ratingmax)
     return res.status(200).json(products)
 })
 
-Router.get('/product/:id', async (req,res) => {
+Router.get('/product/:id', async (req, res) => {
     const { id } = req.params
     let product = await ProductModel.findById(id)
     res.status(200).json(product)
@@ -41,13 +59,22 @@ Router.post('/product', async (req, res) => {
         await ProductModel.create(data, (err) => {
             if (err) {
                 console.log(err)
-                return res.status(400).json({code: 0, message: 'Make sure you typed it right'})
+                return res.status(400).json({ code: 0, message: 'Make sure you typed it right' })
             }
             else {
                 return res.status(201).json({ code: 1, message: 'Success added to database' })
             }
         })
     }
+})
+
+Router.put('/product/:id/rating', async (req,res)=>{
+    const id = req.params.id
+    let rating = req.body.rating? _.toNumber(req.body.rating) : 0
+    let product = await ProductModel.findById(id)
+    product.rating.push(rating)
+    product.save()
+    res.status(200).json({code: 1, message: 'Success rating'})
 })
 
 module.exports = Router

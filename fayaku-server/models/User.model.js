@@ -4,7 +4,8 @@ const UserSchema = mongoose.Schema({
     email:{
         type: String,
         unique: true,
-        validate: /.+\@.+\..+/
+        validate: /.+\@.+\..+/,
+        lowercase: true
     },
     phone: {
         type: String,

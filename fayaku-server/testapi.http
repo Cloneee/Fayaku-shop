@@ -18,7 +18,7 @@ Content-Type: application/x-www-form-urlencoded
 
 
 ###
-GET http://localhost:8000/api/product/6105a89943165e07387979e8
+GET http://localhost:8000/api/product/6107af929e9d7f3a14e44541
 
 ###
 POST http://localhost:8000/user/register
@@ -31,8 +31,17 @@ email=example@gmail.com
 &phone=0907579269
 
 ###
-POST http://localhost:8000/user/login
+POST http://localhost:8000/auth/login
 Content-Type: application/x-www-form-urlencoded
 
 email=example@gmail.com
 &password=123456789
+
+###
+GET http://localhost:8000/api/products?pricemax=10000&limit=3&
+
+###
+PUT http://localhost:8000/api/product/6107b0899e9d7f3a14e44553/rating
+Content-Type: application/x-www-form-urlencoded
+
+rating=5

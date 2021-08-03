@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const _ = require('lodash')
 
 const ProductSchema = mongoose.Schema({
     name: {
@@ -24,8 +25,23 @@ const ProductSchema = mongoose.Schema({
     description: String,
     rating:{
         type: [Number],
-        enum: [1,2,3,4,5]
+        enum: [1,2,3,4,5],
+        default: [5]
     },
+    avrating: {
+        type: Number
+    }
 })
+
+ProductSchema.post("save", async function (doc, next) {
+    try {
+      let data = await doc
+        .model("Product")
+        .findOneAndUpdate({ _id: doc._id }, { avrating: _.mean(doc.rating) });
+    } catch (error) {
+      console.log("get -> error", error);
+      next(error);
+    }
+});
 
 module.exports = mongoose.model('Product', ProductSchema)
