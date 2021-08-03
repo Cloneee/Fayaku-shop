@@ -5,6 +5,13 @@
     height: 80%;
     object-fit: cover;
 }
-.productTitle{
-    height: 5%;
+.productBody{
+    display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* height: 20%; */
+
 }
+div.productBody {
+    /* border: 1px solid red; */
+  }
