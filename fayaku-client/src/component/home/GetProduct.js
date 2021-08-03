@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllProducts } from '../../redux/action/admin/actProduct'
 import { getOneProduct } from '../../redux/action/admin/actProduct';
+import { Rate } from 'antd';
 const GetProduct = () => {
     const history = useHistory();
     const dispatch = useDispatch();
@@ -44,21 +45,21 @@ const GetProduct = () => {
         let nf = new Intl.NumberFormat();
         let price = nf.format(product.price);
         let mapProductImageButton = product.image.map((image, index) => {
-            if(index===0) return  <button
-            type="button"
-            data-mdb-target={`#carousel-product${index}`}
-            data-mdb-slide-to={index}
-            class="active"
-            aria-current="true"
-            aria-label={`Slide ${index+1}`}
-        ></button>
+            if (index === 0) return <button
+                type="button"
+                data-mdb-target={`#carousel-product${index}`}
+                data-mdb-slide-to={index}
+                class="active"
+                aria-current="true"
+                aria-label={`Slide ${index + 1}`}
+            ></button>
             return <button
-            type="button"
-            data-mdb-target={`#carousel-product${index}`}
-            data-mdb-slide-to={`${index}`}
-            aria-current="true"
-            aria-label={`Slide ${index+1}`}
-        ></button>
+                type="button"
+                data-mdb-target={`#carousel-product${index}`}
+                data-mdb-slide-to={`${index}`}
+                aria-current="true"
+                aria-label={`Slide ${index + 1}`}
+            ></button>
         })
         return <div className="col-lg-3 col-sm-4 d-flex ">
             <div class={indexMouse === index ? " card  hover-shadow " : " card  shadow-3 "} onMouseEnter={() => mouseEnterOnProduct(index)}>
@@ -73,7 +74,7 @@ const GetProduct = () => {
 
 
 
-                 <div  className="">
+                <div className="">
                     <div
                         id={`carousel-product${index}`}
                         class="carousel slide carousel-fade "
@@ -105,13 +106,13 @@ const GetProduct = () => {
 
                         <div class=" carousel-inner ">
                             <div class="carousel-item active ">
-                                
+
                                 <img
                                     src={product.image[0]}
                                     class="card-img imgproduct  "
                                     alt="..."
                                 />
-                               
+
 
                             </div>
 
@@ -153,19 +154,23 @@ const GetProduct = () => {
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-                </div> 
+                </div>
                 {/*  */}
                 <div class="  card-body">
                     <h5 class=" "><em><strong>{product.name}</strong></em></h5>
+                    <Rate disabled defaultValue={product.rating[0]} />
+                    <br></br>
                     <div className="">
-                        
-                            <p>
-                                <strong className="text-danger">{price} VNĐ</strong>
-                                <br></br>
-                                <strong >Đã bán: {product.sale}</strong>
-                                <br></br>
-                            </p>
-                        
+
+                        <p>
+                            <strong className="text-danger">{price} VNĐ</strong>
+                            <br></br>
+                            <strong >Đã bán: {product.sale}</strong>
+                            <br></br>
+                        </p>
+                       
+                       
+                        <br></br>
                         <div className="">
                             <div class="btn btn-danger w-50 " key={index} onClick={() => productOnClick(product._id)}><i class="fas fa-shopping-bag" ></i> Mua</div>
                             <div class="btn btn-dark w-50 " onClick={() => updateProductOnClick(product.productId)}><i class="fas fa-edit"></i> Chỉnh sửa</div>
