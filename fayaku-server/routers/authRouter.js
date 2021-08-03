@@ -12,6 +12,9 @@ function genJWT (email){
 
 Router.post('/register', async (req, res) => {
     let { email, password, fullname, sex, phone } = req.body
+    if (!email || !password || ! fullname || !sex || !phone){
+        return res.status(400).json({code: 0, message: 'Not enough infomation'})
+    }
     UserModel.exists({ email: email })
         .then((isExists) => {
             if (isExists) {
