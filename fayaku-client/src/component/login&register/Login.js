@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 const Login = () => {
     return (
         <>
+        
              <div
                         class="tab-pane fade show active"
                         id="pills-login"
@@ -30,7 +31,7 @@ const Login = () => {
                                 </button>
                             </div>
 
-                            <p class="text-center">or:</p>
+                            <p class="text-center">Hoặc:</p>
 
                             <div class="form-outline mb-4">
                                 <input type="email" id="loginName" class="form-control" />
@@ -53,20 +54,20 @@ const Login = () => {
                                             type="checkbox"
                                             value=""
                                             id="loginCheck"
-                                            checked
+                                            // checked
                                         />
-                                        <label class="form-check-label" for="loginCheck"> Remember me </label>
+                                        <label class="form-check-label" for="loginCheck"> Nhớ tài khoản/mật khẩu </label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 d-flex justify-content-center">
 
-                                    <a href="#!">Forgot password?</a>
+                                    <a href="#!">Quên mật khẩu?</a>
                                 </div>
                             </div>
-
-                            <button type="submit" class="btn btn-primary btn-block mb-4">Đăng nhập</button>
-
+                            <div class="text-center ">
+                            <button type="submit" class="btn btn-primary " >Đăng nhập</button>
+                            </div>
                             <div class="text-center">
                                 {/* <p>Not a member? <Link to="/register">Register</Link></p> */}
                             </div>
