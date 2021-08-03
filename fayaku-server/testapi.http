@@ -21,20 +21,20 @@ Content-Type: application/x-www-form-urlencoded
 GET http://localhost:8000/api/product/6107af929e9d7f3a14e44541
 
 ###
-POST http://localhost:8000/user/register
+POST http://localhost:8000/auth/register
 Content-Type: application/x-www-form-urlencoded
 
-email=example@gmail.com
+email=newemail@gmail.com
 &password=123456789
-&fullname=Nguyen Thanh Huy
+&fullname=Hoàng Lạc Phúc
 &sex=male
-&phone=0907579269
+&phone=0907555464
 
 ###
 POST http://localhost:8000/auth/login
 Content-Type: application/x-www-form-urlencoded
 
-email=example@gmail.com
+email=newemail@gmail.com
 &password=123456789
 
 ###
