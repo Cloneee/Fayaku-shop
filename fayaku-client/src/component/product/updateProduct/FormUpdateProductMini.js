@@ -66,7 +66,7 @@ const FormUpdatePoductMini = (props) => {
                 enableReinitialize
                 initialValues={product}
                 validationSchema={Yup.object({
-                    productName: Yup.string()
+                    name: Yup.string()
                         .max(50, 'Tên không được quá 50 ký tự')
                         .min(10, 'Tên không được ít hơn 10 ký tự')
                         .required('Thông tin này là bắt buộc'),
@@ -111,7 +111,7 @@ const FormUpdatePoductMini = (props) => {
                             <FormikControl
                                 control="input"
                                 label="Tên sản phẩm:"
-                                name="productName"
+                                name="name"
                                 type="text"
                             />
                         </div>
@@ -129,7 +129,7 @@ const FormUpdatePoductMini = (props) => {
                                 />
 
                             </div>
-                            <div className="col-2">
+                            <div className="col-4">
                                 <FormikControl
                                     control="input"
                                     label="Đã bán:"
@@ -140,13 +140,7 @@ const FormUpdatePoductMini = (props) => {
                                 />
 
                             </div>
-                            <div className="col-2">
-                                <FormikControl
-                                    control="select" label="Size" name="size"
-                                    type="number" options={exportListSizeOfProduct}>
-                                  
-                                </FormikControl>
-                            </div>
+                            
                             <div className="col-4">
                                 <FormikControl
                                     control='input'
@@ -163,12 +157,12 @@ const FormUpdatePoductMini = (props) => {
                         <br></br>
                         <div className="row">
                             <div className="col-6">
-                            <FormikControl
+                            {/* <FormikControl
                                     control="select"
                                     label="Nhà cung cấp" name="supplier"
                                     options={ListSupplierObject} 
                                     
-                                   />
+                                   /> */}
                             </div>
                             <div className="col-6">
                                 {/* <FormikControl

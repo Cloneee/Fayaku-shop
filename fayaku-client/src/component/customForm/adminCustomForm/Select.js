@@ -5,7 +5,7 @@ const Select = (props) => {
 
     return (
         <div>
-            <div className="">
+            <div className="h-80">
                 <label htmlFor={name}><strong>{label}</strong></label>
                 <Field as='select' id={name} name={name} {...rest} className="form-select"
                 // and do something about e

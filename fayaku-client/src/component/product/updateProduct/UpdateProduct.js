@@ -39,7 +39,7 @@ const UpdateProduct = () => {
 
                     <div className="col-lg-3 col-sm-4 ">
                     <div className="w-100" style={contentStyle}></div>
-                        <CarouselProductImage product={product} />
+                        <CarouselProductImage product={product} type="actions card on" />
 
                     </div>
                     <div className="container col-lg-9 col-sm-4 gx-5 ">
