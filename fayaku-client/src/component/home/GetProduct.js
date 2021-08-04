@@ -28,7 +28,8 @@ const GetProduct = () => {
     }
     const updateProductOnClick = (id) => {
 
-        let path = `/san-pham/cap-nhat/` + id;
+        let path = `admin/san-pham/cap-nhat/` + id;
+        console.log(path)
         history.push(path);
 
 
@@ -173,7 +174,7 @@ const GetProduct = () => {
                         <br></br>
                         <div className="">
                             <div class="btn btn-danger w-50 " key={index} onClick={() => productOnClick(product._id)}><i class="fas fa-shopping-bag" ></i> Mua</div>
-                            <div class="btn btn-dark w-50 " onClick={() => updateProductOnClick(product.productId)}><i class="fas fa-edit"></i> Chỉnh sửa</div>
+                            <div class="btn btn-dark w-50 " onClick={() => updateProductOnClick(product._id)}><i class="fas fa-edit"></i> Chỉnh sửa</div>
                         </div>
 
                     </div>

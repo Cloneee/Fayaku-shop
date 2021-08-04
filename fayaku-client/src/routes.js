@@ -11,9 +11,9 @@ const routes = [
      { path: "/san-pham/:id", component: ProductDetail, exact: true },
      { path: "/dang-nhap", component: LoginHome, exact: true },
      //Admin
-     { path: ["/admin/trang-chu","/admin/"], component: HomePageAdmin, exact: false },
-     { path: "/admin/login", component: HomePageAdmin, exact: false },
-     { path: "admin/san-pham/cap-nhat/:id", component: UpdateProduct, exact: true },
+     { path: ["/admin/trang-chu","/admin/"], component: HomePageAdmin, exact: true },
+     { path: "/admin/login", component: HomePageAdmin, exact: true },
+     { path: "/admin/san-pham/cap-nhat/:id", component: UpdateProduct, exact: true },
      //notFound & Exception
      { path: "", component: PageNotFound, exact: true },
      //Note: Page not Found need stay last of array.

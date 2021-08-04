@@ -4,7 +4,7 @@ import { facebookProvider, githubProvider, googleProvider } from '../../config/a
 import socalMediaAuth from "../../services/oauth"
 
 const Login = () => {
-    const handleLoginWithGG = async (provider) =>{
+    const handleLoginWithSocialMedia = async (provider) =>{
         const res = await socalMediaAuth(provider)
         console.log(res)
     }
@@ -20,21 +20,21 @@ const Login = () => {
                         <form>
                             <div class="text-center mb-3">
                                 <p>Đăng nhập bằng:</p>
-                                <button type="button" onClick={()=> handleLoginWithGG(facebookProvider)} class="btn btn-primary btn-floating mx-1">
+                                <button type="button" onClick={()=> handleLoginWithSocialMedia(facebookProvider)} class="btn btn-primary btn-floating mx-1">
                                     <i class="fab fa-facebook-f"></i>
                                 </button>
 
-                                <button type="button" onClick={()=> handleLoginWithGG(googleProvider)} class="btn btn-primary btn-floating mx-1">
+                                <button type="button" onClick={()=> handleLoginWithSocialMedia(googleProvider)} class="btn btn-primary btn-floating mx-1">
                                     <i class="fab fa-google"></i>
                                 </button>
 
-                                <button type="button" onClick={()=> handleLoginWithGG(facebookProvider)} class="btn btn-primary btn-floating mx-1">
+                                {/* <button type="button" onClick={()=> handleLoginWithGG(facebookProvider)} class="btn btn-primary btn-floating mx-1">
                                     <i class="fab fa-twitter"></i>
-                                </button>
+                                </button> */}
 
-                                <button type="button" onClick={()=> handleLoginWithGG(githubProvider)} class="btn btn-primary btn-floating mx-1">
+                                {/* <button type="button" onClick={()=> handleLoginWithGG(githubProvider)} class="btn btn-primary btn-floating mx-1">
                                     <i class="fab fa-github"></i>
-                                </button>
+                                </button> */}
                             </div>
 
                             <p class="text-center">Hoặc:</p>

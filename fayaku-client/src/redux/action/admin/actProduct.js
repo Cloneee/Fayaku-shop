@@ -9,8 +9,9 @@ export const setOneProductToStore = (product) => {
     };
 };
 export const getOneProduct = (id) => {
-    
-    const url = ONE_PRODUCT_API +id;
+    console.log(id)
+    let url = 'http://localhost:8000/api/product/' + id;
+    console.log(url)
     return (dispatch) => {
         return axios
             .get(url)

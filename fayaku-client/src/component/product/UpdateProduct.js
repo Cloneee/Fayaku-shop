@@ -10,12 +10,7 @@ const UpdateProduct = () => {
     const { id } = useParams()
     const dispatch = useDispatch();
     const productFromStore = useSelector((state) => state.productByID)
-
-
-
     let product = productFromStore
-
-
     useEffect(() => {
         console.log(id)
         dispatch(getOneProduct(id));
@@ -26,8 +21,10 @@ const UpdateProduct = () => {
 
 
     return (
-
+        <>
+        {product._id===id ? 
         <div className="row  " >
+           
             <div className=" text-center bg-light ">
                 <br></br>
                 <strong>TK'Shop <i class="fas fa-angle-right"></i>  Sản phẩm <i class="fas fa-angle-right"></i> {product.productName} (ID: {product.productId}) </strong> <i class="fas fa-angle-right"></i> Cập nhật
@@ -36,7 +33,7 @@ const UpdateProduct = () => {
             </div>
 
             <div className="col-lg-3 col-sm-4 ">
-                <img className="img-thumbnail" src={product.image} alt="" ></img>
+                <img className="img-thumbnail" src={product.image[0]} alt="" ></img>
 
             </div>
             <div className="container col-lg-9 col-sm-4 gx-5 ">
@@ -46,10 +43,13 @@ const UpdateProduct = () => {
                 <br></br>
                 {/* <FormUpdateProduct product = {product}/> */}
                 {/* <FormUpdatePoduct product={productFromStore} /> */}
-                <FormUpdatePoductMini  product={productFromStore} />
+                <FormUpdatePoductMini  product={productFromStore} /> 
             </div>
+           
 
         </div>
+        : <div><strong>Somethings wrong, please try again!</strong></div> }
+        </>
     )
 }
 

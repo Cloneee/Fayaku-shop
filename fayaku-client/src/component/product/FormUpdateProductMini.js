@@ -10,11 +10,6 @@ import Input from '../customForm/Input';
 import FormikControl from '../customForm/FormikControl';
 import TextArea from '../customForm/TextArea';
 
-
-
-
-
-
 // And now we can use these
 const FormUpdatePoductMini = (props) => {
     const dispatch = useDispatch();
