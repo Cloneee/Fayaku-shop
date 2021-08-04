@@ -2,13 +2,13 @@ import ReactDOM from 'react-dom';
 import { Formik, Form, useField } from 'formik';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllSuppliers } from '../../redux/action/user/userSupplier';
-import { updateProduct } from '../../redux/action/admin/actProduct';
+import { getAllSuppliers } from '../../../redux/action/user/userSupplier';
+import { updateProduct } from '../../../redux/action/admin/actProduct';
 import * as Yup from 'yup';
-import Select from '../customForm/Select';
-import Input from '../customForm/Input';
-import FormikControl from '../customForm/FormikControl';
-import TextArea from '../customForm/TextArea';
+import Select from '../../customForm/Select';
+import Input from '../../customForm/Input';
+import FormikControl from '../../customForm/FormikControl';
+import TextArea from '../../customForm/TextArea';
 
 // And now we can use these
 const FormUpdatePoductMini = (props) => {

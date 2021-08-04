@@ -3,7 +3,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getOneProduct } from '../../redux/action/admin/actProduct';
+import { getOneProduct } from '../../../redux/action/admin/actProduct';
 import FormUpdatePoduct from './FormUpdateProduct';
 import FormUpdatePoductMini from './FormUpdateProductMini';
 const UpdateProduct = () => {

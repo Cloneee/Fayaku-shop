@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllSuppliers } from '../../redux/action/user/userSupplier';
-import { updateProduct } from '../../redux/action/admin/actProduct';
+import { getAllSuppliers } from '../../../redux/action/user/userSupplier';
+import { updateProduct } from '../../../redux/action/admin/actProduct';
 const FormUpdatePoduct = (props) => {
     const dispatch = useDispatch();
     const product = props.product

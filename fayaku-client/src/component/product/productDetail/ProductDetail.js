@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
-import { getOneProduct } from "../../redux/action/admin/actProduct"
+import { getOneProduct } from "../../../redux/action/admin/actProduct"
 
 const ProductDetail = () => {
     const { id } = useParams()
