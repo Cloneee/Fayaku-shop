@@ -1,7 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { facebookProvider, githubProvider, googleProvider } from '../../config/authMethod'
+import socalMediaAuth from "../../services/oauth"
 
 const Login = () => {
+    const handleLoginWithGG = async (provider) =>{
+        const res = await socalMediaAuth(provider)
+        console.log(res)
+    }
     return (
         <>
         
@@ -14,19 +20,19 @@ const Login = () => {
                         <form>
                             <div class="text-center mb-3">
                                 <p>Đăng nhập bằng:</p>
-                                <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <button type="button" onClick={()=> handleLoginWithGG(facebookProvider)} class="btn btn-primary btn-floating mx-1">
                                     <i class="fab fa-facebook-f"></i>
                                 </button>
 
-                                <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <button type="button" onClick={()=> handleLoginWithGG(googleProvider)} class="btn btn-primary btn-floating mx-1">
                                     <i class="fab fa-google"></i>
                                 </button>
 
-                                <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <button type="button" onClick={()=> handleLoginWithGG(facebookProvider)} class="btn btn-primary btn-floating mx-1">
                                     <i class="fab fa-twitter"></i>
                                 </button>
 
-                                <button type="button" class="btn btn-primary btn-floating mx-1">
+                                <button type="button" onClick={()=> handleLoginWithGG(githubProvider)} class="btn btn-primary btn-floating mx-1">
                                     <i class="fab fa-github"></i>
                                 </button>
                             </div>
