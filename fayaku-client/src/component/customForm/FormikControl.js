@@ -1,7 +1,8 @@
 import React from 'react'
 import InputCustom from './adminCustomForm/InputCustom'
 import SelectCustom from './adminCustomForm/SelectCustom'
-import Input from './Input'
+import InputNormal from './InputNormal'
+import Input from './InputNormal'
 import Select from './Select'
 import TextArea from './TextArea'
 

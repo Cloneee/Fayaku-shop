@@ -47,7 +47,7 @@ const GetProductIndex = () => {
                     {/* <Link class="btn btn-primary animated infinite bounce delay-2s">Go somewhere</Link> */}
                 </div>
                 {/* <GetProduct /> */}
-                <div class="">
+                <div class="container">
                 {indexstate === 0 && <GetProduct />}
                 </div>
                 

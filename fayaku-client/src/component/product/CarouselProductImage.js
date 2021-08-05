@@ -1,6 +1,7 @@
 import React from 'react'
-import { Carousel,Card} from 'antd';
+import { Carousel, Card, Row, Col } from 'antd';
 import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import "../../assets/css/product.css"
 const CarouselProductImage = (props) => {
     let product = props.product
     let type = props.type
@@ -21,73 +22,62 @@ const CarouselProductImage = (props) => {
     //     setDotPosition(value);
     // };
     const mapListProductImage = product.image.map((image, index) => {
-        if (type ==="actions card on")
-        return <div>
+        if (type === "actions card on")
+            return <>
+                {/* <h3 style={contentStyle}>1</h3> */}
+                {/* <img className="img-thumbnail" src={product.image[index]} alt="" ></img> */}
+
+                
+                    <Card align="top"
+                        actions={[
+                            <PlusOutlined data-mdb-toggle="tooltip"
+                                data-mdb-placement="top"
+                                title="Thêm ảnh mới" />,
+                            <EditOutlined key="edit" data-mdb-toggle="tooltip"
+                                data-mdb-placement="top"
+                                title="Sửa ảnh" />,
+                            <DeleteOutlined key="delete" data-mdb-toggle="tooltip"
+                                data-mdb-placement="top"
+                                title="Xoá ảnh" />,
+                        ]}
+                        cover={
+                            <img
+                                className=" " src={product.image[index]} alt=""
+                            />
+
+                        }
+                    >
+                        <Meta
+                            // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                            className="text-center"
+                            title={`${index + 1}/${product.image.length}`}
+                        // description="This is the description"
+                        />
+                    </Card>
+
+
+            </>
+        else return <>
             {/* <h3 style={contentStyle}>1</h3> */}
             {/* <img className="img-thumbnail" src={product.image[index]} alt="" ></img> */}
-            <div className="">
-                <Card
-                    actions={[
-                        <PlusOutlined data-mdb-toggle="tooltip"
-                        data-mdb-placement="top"
-                        title="Thêm ảnh mới" />,
-                        <EditOutlined key="edit" data-mdb-toggle="tooltip"
-                        data-mdb-placement="top"
-                        title="Sửa ảnh" />,
-                        <DeleteOutlined key="delete" data-mdb-toggle="tooltip"
-                        data-mdb-placement="top"
-                        title="Xoá ảnh"/>,
-                    ]} 
-                    cover={
-                        <img 
-                            className="img-thumbnail" src={product.image[index]} alt=""
-                        />
-                        
-                    }
-                >
-                    <Meta
-                                // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                                className="text-center"
-                                title={`${index+1}/${product.image.length}`}
-                                // description="This is the description"
-                            />
-                </Card>
+            <Card
 
-            </div>
-        </div>
-         else return <div>
-         {/* <h3 style={contentStyle}>1</h3> */}
-         {/* <img className="img-thumbnail" src={product.image[index]} alt="" ></img> */}
-         <div className="">
-             <Card
-                //  actions={[
-                //      <PlusOutlined data-mdb-toggle="tooltip"
-                //      data-mdb-placement="top"
-                //      title="Thêm ảnh mới" />,
-                //      <EditOutlined key="edit" data-mdb-toggle="tooltip"
-                //      data-mdb-placement="top"
-                //      title="Sửa ảnh" />,
-                //      <DeleteOutlined key="delete" data-mdb-toggle="tooltip"
-                //      data-mdb-placement="top"
-                //      title="Xoá ảnh"/>,
-                //  ]} 
-                 cover={
-                     <img 
-                         className="img-thumbnail" src={product.image[index]} alt=""
-                     />
-                     
-                 }
-             >
-                 <Meta
-                             // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                             className="text-center"
-                             title={`${index+1}/${product.image.length}`}
-                             // description="This is the description"
-                         />
-             </Card>
+                cover={
+                    <img
+                        className="img-thumbnail" src={product.image[index]} alt=""
+                    />
 
-         </div>
-     </div> 
+                }
+            >
+                <Meta
+                    // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+                    className="text-center"
+                    title={`${index + 1}/${product.image.length}`}
+                // description="This is the description"
+                />
+            </Card>
+        </>
+
     })
     return (
         <>
@@ -96,7 +86,7 @@ const CarouselProductImage = (props) => {
             <Carousel dotPosition={dotPosition}>
                 {mapListProductImage}
             </Carousel>
-            
+
         </>
     )
 }

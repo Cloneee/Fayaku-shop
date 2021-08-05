@@ -1,14 +1,20 @@
 import ReactDOM from 'react-dom';
-import { Formik, Form, useField } from 'formik';
+import { Formik, useField } from 'formik';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllSuppliers } from '../../../redux/action/user/userSupplier';
 import { updateProduct } from '../../../redux/action/admin/actProduct';
 import * as Yup from 'yup';
-import Select from '../../customForm/Select';
-import Input from '../../customForm/Input';
+// import Input from '../../customForm/Input';
 import FormikControl from '../../customForm/FormikControl';
 import TextArea from '../../customForm/TextArea';
+import {
+    Form, SubmitButton, ResetButton, /* ... */
+    Input,
+    FormItem,
+    Rate
+} from 'formik-antd'
+
 
 // And now we can use these
 const FormUpdatePoductMini = (props) => {
@@ -63,34 +69,21 @@ const FormUpdatePoductMini = (props) => {
         <>
             <h1 className="text-center">CẬP NHẬT SẢN PHẨM!</h1>
             <Formik
-                enableReinitialize
+                // enableReinitialize
                 initialValues={product}
                 validationSchema={Yup.object({
                     name: Yup.string()
                         .max(50, 'Tên không được quá 50 ký tự')
                         .min(10, 'Tên không được ít hơn 10 ký tự')
                         .required('Thông tin này là bắt buộc'),
-                    description: Yup.string()
-                        .max(5000, 'Tên không được quá 500 ký tự')
-                        .min(0, 'Tên không được ít hơn 10 ký tự'),
-                    // .required('Thông tin này là bắt buộc'),
-                    quantity: Yup.number()
+                    sale: Yup.number()
+                        .required('Thông tin này là bắt buộc'),
+                    avrating: Yup.number()
+                        .max(5, 'Tên không được quá 50 ký tự')
+                        .min(0, 'Tên không được ít hơn 10 ký tự')
 
-                        .min(0, '>0')
-                        .required('Required'),
-                    selledQTT: Yup.number()
-                        .min(0, '>0')
-                        .required('Required'),
-                    size: Yup.number()
-                        .min(0, '>0')
-                        .required('Required'),
-                    buyPrice: Yup.number()
-                        .min(0, '>0')
-                        .required('Required'),
-                    supplier: Yup.object().shape({
-                        supplierId: Yup.number().required("Required"),
-                        supplierName: Yup.string().required("Required"),
-                    })
+
+
                     // email: Yup.string().email('Invalid email address').required('Required'),
                 })}
                 onSubmit={(values, { setSubmitting }) => {
@@ -114,11 +107,10 @@ const FormUpdatePoductMini = (props) => {
                                 label="Tên sản phẩm:"
                                 name="name"
                                 type="text"
-                                
+
                             />
                         </div>
 
-                        <br></br>
                         <div className="row">
                             <div className="col-4">
                                 <FormikControl
@@ -135,9 +127,9 @@ const FormUpdatePoductMini = (props) => {
                                 <FormikControl
                                     control="input"
                                     label="Đã bán:"
-                                    name="selledQTT"
+                                    name="sale"
                                     type="number"
-                                    placeholder="Đã bán"
+                                    // placeholder="Đã bán"
                                     disabled
                                 />
 
@@ -146,17 +138,16 @@ const FormUpdatePoductMini = (props) => {
                             <div className="col-4">
                                 <FormikControl
                                     control='input'
-                                    label="Giá nhập vào (VND):"
-                                    name="buyPrice"
+                                    label="Giá nhập vào (Yên):"
+                                    name="price"
                                     type="number"
-                                    placeholder="Giá nhập vào (VND):"
-                                // disabled
+                                    placeholder="Giá nhập vào (Yên):"
+                                    disabled
                                 />
 
                             </div>
 
                         </div>
-                        <br></br>
                         <div className="row">
                             <div className="col-6 ">
                                 <FormikControl
@@ -172,23 +163,22 @@ const FormUpdatePoductMini = (props) => {
                                     label="Nhà cung cấp" name="supplier"
                                     options={ListSupplier} 
                                    /> */}
-                                
-                                    <FormikControl
-                                        control='input'
-                                        label="Giá nhập vào (VND):"
-                                        name="buyPrice"
-                                        type="number"
-                                        placeholder="Giá nhập vào (VND):"
-                                    // disabled
-                                    />
 
-                                
+                                <FormikControl
+                                    control='input'
+                                    label="Giá nhập vào (VND):"
+                                    name="buyPrice"
+                                    type="number"
+                                    placeholder="Giá nhập vào (VND):"
+                                // disabled
+                                />
+
+
 
 
                             </div>
                         </div>
 
-                        <br></br>
                         <FormikControl
                             control='textarea'
                             label="Giới thiệu sản phẩm:"
@@ -197,9 +187,11 @@ const FormUpdatePoductMini = (props) => {
                             type="text"
                             placeholder="description"
                         />
+                        <SubmitButton />
+                        <ResetButton />
 
 
-
+                        <Rate name="avrating" allowHalf={true} allowClear={true} disabled />
 
 
                         <br></br>
@@ -209,6 +201,8 @@ const FormUpdatePoductMini = (props) => {
                         </div>
 
                     </div>
+
+
                 </Form>
 
             </Formik>

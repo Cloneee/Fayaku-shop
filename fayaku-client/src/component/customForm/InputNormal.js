@@ -3,7 +3,7 @@ import { Formik, Form,Field, ErrorMessage } from 'formik';
 import TextError from './TextError';
 
 
-const Input = (props) => {
+const InputNormal = (props) => {
     const {label,name, ...rest} = props
     return (
         <>
@@ -22,4 +22,4 @@ const Input = (props) => {
     )
 }
 
-export default Input
+export default InputNormal
