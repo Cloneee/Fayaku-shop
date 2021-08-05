@@ -8,14 +8,15 @@ Router.get('/', (req, res) => {
 })
 
 Router.get('/products', async (req, res) => {
-    // Filter: limit, category, brand, suppiler, pricemin, pricemax, status, ratingmin, ratingmax
+    // Filter: limit, page, category, brand, suppiler, pricemin, pricemax, status, ratingmin, ratingmax
     let query = req.query
     let filter = {}
     let limit = query.limit? _.toNumber(query.limit) : 20,
         pricemin = query.pricemin? query.pricemin : 0 ,
         pricemax = query.pricemax? query.pricemax : 100000000,
         ratingmin = query.ratingmin? query.ratingmin : 1,
-        ratingmax = query.ratingmax? query.ratingmax : 5
+        ratingmax = query.ratingmax? query.ratingmax : 5,
+        page = query.page? _.toNumber(query.page) : 1
 
     for (prop in query) {
         //check exists query
@@ -27,10 +28,10 @@ Router.get('/products', async (req, res) => {
                 case 'pricemax':
                 case 'ratingmin':
                 case 'ratingmax':
+                case 'page':
                     break
                 default:
                     filter[prop] = query[prop]
-                    console.log(`${prop}: ${query[prop]}`)
             }
         }
     }
@@ -39,6 +40,7 @@ Router.get('/products', async (req, res) => {
         .sort({ _id: -1 }).limit(limit)
         .where('price').gte(pricemin).lte(pricemax)
         .where('avrating').gte(ratingmin).lte(ratingmax)
+        .skip((page-1)*limit)
     return res.status(200).json(products)
 })
 
