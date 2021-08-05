@@ -23,14 +23,14 @@ const FormUpdatePoductMini = (props) => {
         return <option key={index} value={supplier}>{supplier.supplierId} - {supplier.supplierName}</option>
     })
     const ListSupplier = listSupplierFromStore.map((supplier, index) => {
-        return { value: index, key: supplier.supplierId + " - " +  supplier.supplierName }
+        return { value: index, key: supplier.supplierId + " - " + supplier.supplierName }
     })
     const ListSupplierObject = listSupplierFromStore.map((supplier, index) => {
-        return { value: supplier, key: supplier.supplierId + " - " +  supplier.supplierName }
+        return { value: supplier, key: supplier.supplierId + " - " + supplier.supplierName }
     })
 
     const exportListSizeOfProduct = listSizeOfProduct.map((size, index) => {
-        return { value: size , key: size}
+        return { value: size, key: size }
 
     })
     const updateButtonOnClick = (product) => {
@@ -105,14 +105,16 @@ const FormUpdatePoductMini = (props) => {
 
                 }}
             >
-                <Form>
-                    <div className="">
+                <Form
+                >
+                    <div className="d-grid gap-0">
                         <div class="col-12">
                             <FormikControl
                                 control="input"
                                 label="Tên sản phẩm:"
                                 name="name"
                                 type="text"
+                                
                             />
                         </div>
 
@@ -140,7 +142,7 @@ const FormUpdatePoductMini = (props) => {
                                 />
 
                             </div>
-                            
+
                             <div className="col-4">
                                 <FormikControl
                                     control='input'
@@ -156,13 +158,13 @@ const FormUpdatePoductMini = (props) => {
                         </div>
                         <br></br>
                         <div className="row">
-                            <div className="col-6">
-                            {/* <FormikControl
+                            <div className="col-6 ">
+                                <FormikControl
                                     control="select"
                                     label="Nhà cung cấp" name="supplier"
-                                    options={ListSupplierObject} 
-                                    
-                                   /> */}
+                                    options={ListSupplierObject}
+
+                                />
                             </div>
                             <div className="col-6">
                                 {/* <FormikControl
@@ -170,9 +172,19 @@ const FormUpdatePoductMini = (props) => {
                                     label="Nhà cung cấp" name="supplier"
                                     options={ListSupplier} 
                                    /> */}
+                                
+                                    <FormikControl
+                                        control='input'
+                                        label="Giá nhập vào (VND):"
+                                        name="buyPrice"
+                                        type="number"
+                                        placeholder="Giá nhập vào (VND):"
+                                    // disabled
+                                    />
+
+                                
 
 
-                               
                             </div>
                         </div>
 

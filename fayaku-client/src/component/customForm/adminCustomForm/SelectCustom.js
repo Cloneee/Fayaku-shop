@@ -1,19 +1,22 @@
 import React from 'react'
 import { Field, ErrorMessage, Formik } from 'formik'
-const Select = (props) => {
+import Select from 'react-select';
+const SelectCustom = (props) => {
     const { label, name, options, ...rest } = props
 
     return (
         <div>
             <div className="h-80">
                 <label htmlFor={name}><strong>{label}</strong></label>
-                <Field as='select' id={name} name={name} {...rest} className="form-select"
+                <Field as='select' id={name} name={name} {...rest}  
+                component = {Select}
+                
                 // and do something about e
                 // let someValue = e.currentTarget.value
                 >
                     {options && options.length
                         ? options.map((item, index) => (
-                            <option value={JSON.stringify(item.value)} key={index}>
+                            <option value={JSON.stringify(item.value)} key={index}> 
                                 {item.key}
                             </option>
                         ))
@@ -29,4 +32,4 @@ const Select = (props) => {
     )
 }
 
-export default Select
+export default SelectCustom
