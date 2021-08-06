@@ -6,6 +6,7 @@ import { getAllProducts } from '../../redux/action/admin/actProduct'
 import { getOneProduct } from '../../redux/action/admin/actProduct';
 import CarouselProductImage from '../product/CarouselProductImage';
 import { Col, Rate, Row } from 'antd';
+import PaginationHome from "./PaginationHome";
 const GetProduct = () => {
     const history = useHistory();
     const dispatch = useDispatch();
@@ -46,11 +47,11 @@ const GetProduct = () => {
         let nf = new Intl.NumberFormat();
         let price = nf.format(product.price);
 
-        return <Col span={6} className="gutter-row" height="100%">
+        return <Col span={6} className="gutter-row " >
             <div class={indexMouse === index ? "   hover-shadow " : "   shadow-3 "} onMouseEnter={() => mouseEnterOnProduct(index)}>
                 <CarouselProductImage product={product} type="actions card on" />
             </div>
-            </Col>
+        </Col>
 
 
 
@@ -58,10 +59,13 @@ const GetProduct = () => {
     })
 
     return (
-        <Row  gutter={[16,24]} type="flex">
-            
+        <Row gutter={[16, 24]} type="flex">
+
             {mapproducts}
-            
+            <Col span={24} className="gutter-row text-center">
+                {/* <PaginationHome /> */}
+            </Col>
+
         </Row>
 
     )

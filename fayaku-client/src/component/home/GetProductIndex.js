@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import GetProduct from './GetProduct'
 import { Link, Route } from 'react-router-dom'
+import PaginationHome from './PaginationHome'
 
 
 const GetProductIndex = () => {
-    
+
     const [Activeindexstate, setActiveindexstate] = useState([' active', ' '])
     const [indexstate, setindexstate] = useState(0)
     // const [indexTabstate, setindexTabstate] = useState(-1)
-   
+
     const tabOnCLick = (index) => {
         let temp = [...Activeindexstate]
         temp.fill('')
@@ -47,11 +48,18 @@ const GetProductIndex = () => {
                     {/* <Link class="btn btn-primary animated infinite bounce delay-2s">Go somewhere</Link> */}
                 </div>
                 {/* <GetProduct /> */}
-                <div class="container">
-                {indexstate === 0 && <GetProduct />}
+                <div class="container ">
+                    {indexstate === 0 && <GetProduct />}
+                    <div className="row">
+                        <div className="col-12 d-flex justify-content-center">
+                        <PaginationHome />
+
+                        </div>
+                    </div>
                 </div>
                 
             </div>
+
 
 
         </div>
