@@ -5,7 +5,12 @@ import PaginationHome from './PaginationHome'
 
 
 const GetProductIndex = () => {
+    const [totalPage, settotalPage] = useState(9)
+    const [currentPage, setcurrentPage] = useState(1)
 
+    const onPageChange = (current) =>{
+        setcurrentPage(current)
+      }
     const [Activeindexstate, setActiveindexstate] = useState([' active', ' '])
     const [indexstate, setindexstate] = useState(0)
     // const [indexTabstate, setindexTabstate] = useState(-1)
@@ -15,8 +20,6 @@ const GetProductIndex = () => {
         temp.fill('')
         temp[index] = ' active'
         setindexstate(index)
-
-
         setActiveindexstate(temp)
         console.log(Activeindexstate)
 
@@ -52,7 +55,7 @@ const GetProductIndex = () => {
                     {indexstate === 0 && <GetProduct />}
                     <div className="row">
                         <div className="col-12 d-flex justify-content-center">
-                        <PaginationHome />
+                        <PaginationHome totalPage={totalPage} current={currentPage} onPageChange = {onPageChange}/>
 
                         </div>
                     </div>

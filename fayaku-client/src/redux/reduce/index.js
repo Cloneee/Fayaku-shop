@@ -6,11 +6,14 @@ import categoryByID from "./user/category/userGetCategoryById"
 import suppliers from "./user/supplier/userGetAllSuppliers"
 import supplierByID from "./user/supplier/userGetSupplierById"
 import userLogin from "./user/login&register/login"
+import productPagination from "./user/pagination/pagination"
 const reducer = combineReducers({
    products,productByID,
    categories,categoryByID,
    suppliers,supplierByID,
-   userLogin
+   userLogin,
+   productPagination,
+
    
 })
 export default reducer
