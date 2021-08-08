@@ -15,3 +15,26 @@
 div.productBody {
     /* border: 1px solid red; */
   }
+
+.bottomCardBlue{
+  height: 20px;
+  background-color: #5cc6ba;
+  color: white;
+  text-align: center;
+  border: 0.5px solid;
+  padding-bottom: 1px;
+  /* margin-bottom: 1px; */
+  border-radius: 25px;
+  
+}
+.bgColorGray{
+  /* height: 20px; */
+  background-color: #BDBDBD;
+
+  /* text-align: center; */
+  /* border: 0.5px solid; */
+  /* padding-bottom: 1px; */
+  /* margin-bottom: 1px; */
+  /* border-radius: 25px; */
+  
+}
