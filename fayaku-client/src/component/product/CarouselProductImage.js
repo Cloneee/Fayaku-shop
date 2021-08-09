@@ -69,12 +69,7 @@ const CarouselProductImage = (props) => {
 
                 }
             >
-                <Meta
-                    // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                    className="text-center"
-                    title={`${index + 1}/${product.image.length}`}
-                // description="This is the description"
-                />
+              
             </Card>
         </>
 

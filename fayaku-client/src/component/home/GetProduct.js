@@ -11,7 +11,7 @@ import ImageForGetPeoduct from "./ImageForGetPeoduct";
 import CardProduct from "./CardProduct";
 
 const GetProduct = () => {
-    const history = useHistory();
+  
     const dispatch = useDispatch();
     const listProductsFromStore = useSelector((state) => state.products);
 
@@ -23,20 +23,15 @@ const GetProduct = () => {
 
         // }
     }, [])
-    const productOnClick = (id) => {
-        let path = `/san-pham/` + id;
-        history.push(path);
+    
+    // const updateProductOnClick = (id) => {
+
+    //     let path = `admin/san-pham/cap-nhat/` + id;
+    //     console.log(path)
+    //     history.push(path);
 
 
-    }
-    const updateProductOnClick = (id) => {
-
-        let path = `admin/san-pham/cap-nhat/` + id;
-        console.log(path)
-        history.push(path);
-
-
-    }
+    // }
 
 
 

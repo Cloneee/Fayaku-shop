@@ -1,5 +1,6 @@
 import { Rate } from 'antd'
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import ImageForGetPeoduct from './ImageForGetPeoduct'
 
 const CardProduct = (props) => {
@@ -9,21 +10,28 @@ const CardProduct = (props) => {
         console.log(id)
         setindexMouse(id)
     }
-    console.log(product.image[0].naturalWidth)
+    const history = useHistory();
+    const productOnClick = (id) => {
+        console.log(id)
+        let path = `/san-pham/` + id;
+        history.push(path);
+
+
+    }
     let nf = new Intl.NumberFormat();
     let price = nf.format(product.price);
     const [currentImageIndex, setcurrentImageIndex] = useState(0)
     const onChangeProductImageCard = (currentImage) => {
-        
+
         setcurrentImageIndex(currentImage)
-        
+
     }
     return (
         <>
-            <div className="col-lg-3 col-sm-4 d-flex hover-overlay" type="button"  data-mdb-toggle="tooltip"
-  title={product.name}>
+            <div className="col-lg-3 col-sm-4 d-flex hover-overlay" type="button" data-mdb-toggle="tooltip"
+                title={product.name} >
                 <div class={indexMouse === index ? "card  hover-shadow " : "card  shadow-5"} onMouseEnter={() => mouseEnterOnProduct(index)}>
-                    <div
+                    <div  onClick={()=>productOnClick(product._id)}
                         class="mask"
                         style={{ "backgroundColor": "rgba(251, 251, 251, 0.2)" }}
                     ></div>
@@ -42,7 +50,7 @@ const CardProduct = (props) => {
                             <div className="col-2">
                                 <button type="button" class="btn btn-dark btn-floating mx-1"
                                     onClick={() => onChangeProductImageCard(currentImageIndex - 1)}
-                                    disabled={currentImageIndex===0 }
+                                    disabled={currentImageIndex === 0}
                                 >
                                     <i class="fas fa-angle-left"></i>
                                 </button>
@@ -65,7 +73,7 @@ const CardProduct = (props) => {
                             <div className="col-2 ">
                                 <button type="button" class="btn btn-dark btn-floating mx-1"
                                     onClick={() => onChangeProductImageCard(currentImageIndex + 1)}
-                                    disabled={currentImageIndex===product.image.length-1 }
+                                    disabled={currentImageIndex === product.image.length - 1}
 
                                 >
                                     <i class="fas fa-angle-right"></i>
