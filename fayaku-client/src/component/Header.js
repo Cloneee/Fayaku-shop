@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Link, NavLink } from "react-router-dom";
+
 import logo from '../assets/image/WTM.png'
 const Header = () => {
     const [indexHeader, setindexHeader] = useState(0)
+    const [cartSize, setcartSize] = useState(0)
 
+    
     const [valueHeaderClass, setvalueHeaderClass] = useState([' active', ' '])
     const headerOnClick = (CurrentIndexOfHeader) => {
         setindexHeader(CurrentIndexOfHeader)
@@ -15,10 +18,16 @@ const Header = () => {
         console.log('xx' + valueHeaderClass + indexHeader)
 
     }
+    
+    useEffect(() => {
+        console.log(`asdasd`)
+    }, [])
+
     return (
 
         <header>
-
+            
+            {/* {cart === null ? null : setcartSize(cart.length)} */}
             {/* <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"> */}
 
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -46,28 +55,29 @@ const Header = () => {
                         </a>
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li>
-                            <NavLink to="/trang-chu" className = "nav-link" activeClassName="nav-link active">
-                                  <strong>Trang chủ</strong> 
+                                <NavLink to="/trang-chu" className="nav-link" activeClassName="nav-link active">
+                                    <strong>Trang chủ</strong>
                                 </NavLink>
                             </li>
                             <li>
-                            <NavLink to="/bo-suu-tap" className = "nav-link" activeClassName="nav-link active">
-                            <strong>Bộ sưu tập</strong> 
+                                <NavLink to="/bo-suu-tap" className="nav-link" activeClassName="nav-link active">
+                                    <strong>Bộ sưu tập</strong>
                                 </NavLink>
                             </li>
                             <li>
-                            <NavLink to="/faq3" className = "nav-link" activeClassName="nav-link active">
-                            <strong>Khác</strong> 
+                                <NavLink to="/faq3" className="nav-link" activeClassName="nav-link active">
+                                    <strong>Khác</strong>
                                 </NavLink>
                             </li>
-                            
-                            
+
+
                         </ul>
                     </div>
 
                     <div class="d-flex align-items-center">
                         <a class="text-reset me-3" href="#">
                             <i class="fas fa-shopping-cart"></i>
+                            <span class="badge rounded-pill badge-notification bg-danger">{JSON.parse(localStorage.getItem("cart")).length || 0}</span>
                         </a>
 
                         <a

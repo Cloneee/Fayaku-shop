@@ -11,11 +11,20 @@ const ProductDetail = () => {
     const dispatch = useDispatch();
     const [buyQTT, setbuyQTT] = useState(1)
     const productsFromStore = useSelector((state) => state.productByID);
+    let cart = JSON.parse(localStorage.getItem("cart"))
+    if(cart===null) cart = []
     let product = productsFromStore
     const buyQttOnChange = (buy) => {
         setbuyQTT(buy)
 
 
+    }
+    const handleOrderButtonOnChange = (buy) =>{
+        console.log(buy)
+        let newCartItem = {productId: product._id, qtt: buyQTT}
+        cart.push(newCartItem)
+        localStorage.setItem("cart", JSON.stringify(cart))
+        window.location.reload()
     }
     useEffect(() => {
 
@@ -23,6 +32,8 @@ const ProductDetail = () => {
         product = productsFromStore;
         // }
     }, [])
+    
+
 
 
 
@@ -99,7 +110,7 @@ const ProductDetail = () => {
                                     </p>
                                 </div>
                                 <div className="justify-content-center  col-12">
-                                    <button className="btn btn-danger w-80">Đặt mua</button>
+                                    <button className="btn btn-danger w-80" onClick={()=>handleOrderButtonOnChange(buyQTT)}>Đặt mua</button>
                                 </div>
 
                             </div>
