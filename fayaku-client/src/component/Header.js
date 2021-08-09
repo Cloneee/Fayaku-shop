@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { BrowserRouter as Link, NavLink } from "react-router-dom";
 
 import logo from '../assets/image/WTM.png'
 const Header = () => {
     const [indexHeader, setindexHeader] = useState(0)
-    const [cartSize, setcartSize] = useState(0)
-
+    const cartFromStore = useSelector((state) => state.cart);
+    
     
     const [valueHeaderClass, setvalueHeaderClass] = useState([' active', ' '])
     const headerOnClick = (CurrentIndexOfHeader) => {
@@ -18,10 +19,11 @@ const Header = () => {
         console.log('xx' + valueHeaderClass + indexHeader)
 
     }
-    
     useEffect(() => {
-        console.log(`asdasd`)
-    }, [])
+        
+    }, [cartFromStore])
+    
+   
 
     return (
 
@@ -77,7 +79,7 @@ const Header = () => {
                     <div class="d-flex align-items-center">
                         <a class="text-reset me-3" href="#">
                             <i class="fas fa-shopping-cart"></i>
-                            <span class="badge rounded-pill badge-notification bg-danger">{JSON.parse(localStorage.getItem("cart")).length || 0}</span>
+                            <span class="badge rounded-pill badge-notification bg-danger">{cartFromStore.length}</span>
                         </a>
 
                         <a

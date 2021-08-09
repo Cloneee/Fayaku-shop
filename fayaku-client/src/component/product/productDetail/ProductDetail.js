@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { getOneProduct } from "../../../redux/action/admin/actProduct"
+import { setCartToStore } from '../../../redux/action/user/cart&order/cart'
 import CarouselProductImage from '../CarouselProductImage'
 
 const ProductDetail = () => {
@@ -11,8 +12,11 @@ const ProductDetail = () => {
     const dispatch = useDispatch();
     const [buyQTT, setbuyQTT] = useState(1)
     const productsFromStore = useSelector((state) => state.productByID);
-    let cart = JSON.parse(localStorage.getItem("cart"))
-    if(cart===null) cart = []
+    const cartFromStore = useSelector((state) => state.cart);
+
+    const [cart, setcart] = useState(cartFromStore)
+    
+    
     let product = productsFromStore
     const buyQttOnChange = (buy) => {
         setbuyQTT(buy)
@@ -20,11 +24,20 @@ const ProductDetail = () => {
 
     }
     const handleOrderButtonOnChange = (buy) =>{
-        console.log(buy)
+        setbuyQTT(buy)
         let newCartItem = {productId: product._id, qtt: buyQTT}
-        cart.push(newCartItem)
+        let temp = [...cart]
+        
+         let temp2 = temp.push(newCartItem)
+         setcart(temp)
         localStorage.setItem("cart", JSON.stringify(cart))
-        window.location.reload()
+        dispatch(setCartToStore(cart));
+        console.log(cart)
+        console.log(temp)
+
+
+
+        
     }
     useEffect(() => {
 

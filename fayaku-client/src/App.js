@@ -5,8 +5,14 @@ import "./assets/css/product.css"
 import 'antd/dist/antd.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePageAdmin from "./component/admin/HomePage/HomePageAdmin";
+import { useDispatch } from "react-redux";
+import { setCartToStore } from "./redux/action/user/cart&order/cart";
 function App() {
- 
+  const dispatch = useDispatch()
+  let cart = localStorage.getItem("cart");
+  console.log(cart)
+  
+  // console.log("CART length: " + cart.length)
   const maproutes = routes.map((route, index) => {
     return (
       <Route key={index}
@@ -18,18 +24,18 @@ function App() {
   });
   return (
     <Router>
-    <div className="App">
-      <div className="">
-      <Header />
-      <Switch>{maproutes}</Switch>
-      <br></br>
-    
-      <Footer/>
-      
-     
+      <div className="App">
+        <div className="">
+          <Header />
+          <Switch>{maproutes}</Switch>
+          <br></br>
+
+          <Footer />
+
+
+        </div>
+
       </div>
-      
-    </div>
     </Router>
   );
 }
