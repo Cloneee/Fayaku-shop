@@ -44,15 +44,18 @@ const GetProductIndex = () => {
                     </ul>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Fayaku Shop</h5>
+                    {/* <h5 class="card-title">Fayaku Shop</h5>
                     <p class="card-text">
                         With supporting text below as a natural lead-in to additional content.
-                    </p>
+                    </p> */}
                     {/* <Link class="btn btn-primary animated infinite bounce delay-2s">Go somewhere</Link> */}
                 </div>
                 {/* <GetProduct /> */}
                 <div class="container ">
                     {indexstate === 0 && <GetProduct />}
+                    <div className="row">
+                        <div className="col-12" style={{height: "20px"}}></div>
+                    </div>
                     <div className="row">
                         <div className="col-12 d-flex justify-content-center">
                         <PaginationHome totalPage={totalPage} current={currentPage} onPageChange = {onPageChange}/>
