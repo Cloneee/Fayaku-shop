@@ -22,7 +22,10 @@ const CardProduct = (props) => {
     let price = nf.format(product.price);
     const [currentImageIndex, setcurrentImageIndex] = useState(0)
     const onChangeProductImageCard = (currentImage) => {
-
+       
+        if(currentImage===product.image.length) currentImage = 0
+        if(currentImage===-1) currentImage = product.image.length-1
+        
         setcurrentImageIndex(currentImage)
 
     }
@@ -50,7 +53,7 @@ const CardProduct = (props) => {
                             <div className="col-2">
                                 <button type="button" class="btn btn-dark btn-floating mx-1"
                                     onClick={() => onChangeProductImageCard(currentImageIndex - 1)}
-                                    disabled={currentImageIndex === 0}
+                                    // disabled={currentImageIndex === 0}
                                 >
                                     <i class="fas fa-angle-left"></i>
                                 </button>
@@ -73,7 +76,7 @@ const CardProduct = (props) => {
                             <div className="col-2 ">
                                 <button type="button" class="btn btn-dark btn-floating mx-1"
                                     onClick={() => onChangeProductImageCard(currentImageIndex + 1)}
-                                    disabled={currentImageIndex === product.image.length - 1}
+                                    // disabled={currentImageIndex === product.image.length - 1}
 
                                 >
                                     <i class="fas fa-angle-right"></i>

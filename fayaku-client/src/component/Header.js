@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import React, { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Link, NavLink } from "react-router-dom";
 
 import logo from '../assets/image/WTM.png'
+import { getCartFromLocalStorage } from '../redux/action/user/cart&order/cart';
 const Header = () => {
+    const dispatch = useDispatch();
+ 
     const [indexHeader, setindexHeader] = useState(0)
     const cartFromStore = useSelector((state) => state.cart);
+    // if (cartFromStore.length>0) dispatch(getCartFromLocalStorage(2))
+ 
     
-    
+
+
     const [valueHeaderClass, setvalueHeaderClass] = useState([' active', ' '])
     const headerOnClick = (CurrentIndexOfHeader) => {
         setindexHeader(CurrentIndexOfHeader)
@@ -21,16 +27,17 @@ const Header = () => {
     }
     useEffect(() => {
         
-    }, [cartFromStore])
-    
-   
+       
+    }, [])
+
+
+
 
     return (
 
         <header>
-            
-            {/* {cart === null ? null : setcartSize(cart.length)} */}
-            {/* <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"> */}
+
+          
 
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
@@ -79,7 +86,9 @@ const Header = () => {
                     <div class="d-flex align-items-center">
                         <a class="text-reset me-3" href="#">
                             <i class="fas fa-shopping-cart"></i>
-                            <span class="badge rounded-pill badge-notification bg-danger">{cartFromStore.length}</span>
+                            {cartFromStore===null ? <span class="badge rounded-pill badge-notification bg-danger">x</span>
+                                : <span class="badge rounded-pill badge-notification bg-danger">{cartFromStore.length}</span>
+                            }
                         </a>
 
                         <a

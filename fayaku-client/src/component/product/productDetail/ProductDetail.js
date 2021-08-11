@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { getOneProduct } from "../../../redux/action/admin/actProduct"
 import { setCartToStore } from '../../../redux/action/user/cart&order/cart'
+import { getCartFromLocalStorage } from "../../../redux/action/user/cart&order/cart";
+
 import CarouselProductImage from '../CarouselProductImage'
 
 const ProductDetail = () => {
@@ -13,31 +15,19 @@ const ProductDetail = () => {
     const [buyQTT, setbuyQTT] = useState(1)
     const productsFromStore = useSelector((state) => state.productByID);
     const cartFromStore = useSelector((state) => state.cart);
-
-    const [cart, setcart] = useState(cartFromStore)
-    
-    
     let product = productsFromStore
     const buyQttOnChange = (buy) => {
         setbuyQTT(buy)
 
 
     }
-    const handleOrderButtonOnChange = (buy) =>{
-        setbuyQTT(buy)
-        let newCartItem = {productId: product._id, qtt: buyQTT}
-        let temp = [...cart]
-        
-         let temp2 = temp.push(newCartItem)
-         setcart(temp)
-        localStorage.setItem("cart", JSON.stringify(cart))
-        dispatch(setCartToStore(cart));
-        console.log(cart)
+    const handleOrderButtonOnChange = (buyqtt) => {
+        setbuyQTT(buyqtt)
+        let newCartItem = { productId: product._id, qtt: buyQTT }
+        let temp = [...cartFromStore]
+        temp.push(newCartItem)
         console.log(temp)
-
-
-
-        
+        dispatch(getCartFromLocalStorage(temp))   
     }
     useEffect(() => {
 
@@ -45,11 +35,6 @@ const ProductDetail = () => {
         product = productsFromStore;
         // }
     }, [])
-    
-
-
-
-
 
     return (
         <div>
@@ -123,7 +108,7 @@ const ProductDetail = () => {
                                     </p>
                                 </div>
                                 <div className="justify-content-center  col-12">
-                                    <button className="btn btn-danger w-80" onClick={()=>handleOrderButtonOnChange(buyQTT)}>Đặt mua</button>
+                                    <button className="btn btn-danger w-80" onClick={() => handleOrderButtonOnChange(buyQTT)}>Đặt mua</button>
                                 </div>
 
                             </div>

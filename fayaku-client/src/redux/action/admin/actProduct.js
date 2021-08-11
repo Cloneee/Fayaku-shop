@@ -37,7 +37,7 @@ export const getAllProducts = () => {
         return axios
             .get(url)
             .then((res) => {
-                console.log('Get sucess!')
+                // console.log('Get sucess!')
                 dispatch(setAllProductsToStore(res.data));
             })
             .catch((err) => {

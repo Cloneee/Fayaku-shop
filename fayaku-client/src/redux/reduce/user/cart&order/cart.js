@@ -1,8 +1,9 @@
 import {SET_CART} from "../../../constants/types"
-
-let inittial = []
+let cart = localStorage.getItem("cart")
+let inittial = JSON.parse(cart) || []
 let reducer = (state = inittial,action ) =>{
-    let newState = {...state}
+    let newState = [...state]
+	
 	let {type,cart} = action;
 	if(type===SET_CART){
         

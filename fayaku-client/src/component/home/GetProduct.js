@@ -14,25 +14,13 @@ const GetProduct = () => {
   
     const dispatch = useDispatch();
     const listProductsFromStore = useSelector((state) => state.products);
-
     useEffect(() => {
 
         dispatch(getAllProducts());
 
-        // return () => {
-
-        // }
     }, [])
     
-    // const updateProductOnClick = (id) => {
-
-    //     let path = `admin/san-pham/cap-nhat/` + id;
-    //     console.log(path)
-    //     history.push(path);
-
-
-    // }
-
+  
 
 
     

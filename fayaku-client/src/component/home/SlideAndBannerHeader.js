@@ -1,4 +1,7 @@
 import React from 'react'
+import Banner1 from '../../assets/image/banner/Banner1.jpg'
+import Banner2 from '../../assets/image/banner/Banner2.jpg'
+import Banner3 from '../../assets/image/banner/Banner3.jpg'
 
 const SlideAndBannerHeader = () => {
     return (
@@ -35,7 +38,8 @@ const SlideAndBannerHeader = () => {
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img
-                            src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
+                            src={Banner3}
+                            
                             class="d-block w-100"
                             alt="..."
                         />
@@ -47,7 +51,7 @@ const SlideAndBannerHeader = () => {
 
                     <div class="carousel-item">
                         <img
-                            src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
+                            src={Banner1}
                             class="d-block w-100"
                             alt="..."
                         />
@@ -59,7 +63,7 @@ const SlideAndBannerHeader = () => {
 
                     <div class="carousel-item">
                         <img
-                            src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+                            src={Banner2}
                             class="d-block w-100"
                             alt="..."
                         />
