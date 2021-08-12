@@ -4,9 +4,7 @@ import Footer from "./component/Footer";
 import "./assets/css/product.css"
 import 'antd/dist/antd.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import HomePageAdmin from "./component/admin/HomePage/HomePageAdmin";
-import { useDispatch,useSelector } from "react-redux";
-import { getCartFromLocalStorage } from "./redux/action/user/cart&order/cart";
+
 
 function App() {
   // const dispatch = useDispatch()

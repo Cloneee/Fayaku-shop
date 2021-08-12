@@ -12,12 +12,10 @@ export const setProductPaginationToStore = (productPagination) => {
 export const getProductPagination = (limit,page) => {
     
     const url = PRODUCT_PAGINATION_API +"?limit="+limit+"&page="+page ;
-    console.log(url)
     return (dispatch) => {
         return axios
             .get(url)
             .then((res) => {
-                console.log('Get OBJECT PAGINATION sucess!')
                 
                 dispatch(setProductPaginationToStore(res.data));
             })

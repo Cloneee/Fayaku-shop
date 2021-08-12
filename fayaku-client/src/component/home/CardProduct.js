@@ -1,18 +1,15 @@
 import { Button, Rate } from 'antd'
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import ImageForGetPeoduct from './ImageForGetPeoduct'
 
 const CardProduct = (props) => {
     let { product, index } = props
     const [indexMouse, setindexMouse] = useState(-1)
     const mouseEnterOnProduct = (id) => {
-        console.log(id)
         setindexMouse(id)
     }
     const history = useHistory();
     const productOnClick = (id) => {
-        console.log(id)
         let path = `/san-pham/` + id;
         history.push(path);
 
@@ -22,10 +19,10 @@ const CardProduct = (props) => {
     let price = nf.format(product.price);
     const [currentImageIndex, setcurrentImageIndex] = useState(0)
     const onChangeProductImageCard = (currentImage) => {
-       
-        if(currentImage===product.image.length) currentImage = 0
-        if(currentImage===-1) currentImage = product.image.length-1
-        
+
+        if (currentImage === product.image.length) currentImage = 0
+        if (currentImage === -1) currentImage = product.image.length - 1
+
         setcurrentImageIndex(currentImage)
 
     }
@@ -33,38 +30,38 @@ const CardProduct = (props) => {
         <>
             <div className="col-xl-3 col-lg-6 col-sm-4 d-flex hover-overlay  " type="button" data-mdb-toggle="tooltip"
                 title={product.name} >
-                <div class={indexMouse === index ? "card  hover-shadow " : "card  shadow-5"} onMouseEnter={() => mouseEnterOnProduct(index)}>
-                    <div  onClick={()=>productOnClick(product._id)}
-                        class="mask "
+                <div className={indexMouse === index ? "card  hover-shadow " : "card shadow-5 "} onMouseEnter={() => mouseEnterOnProduct(index)}>
+                    <div onClick={() => productOnClick(product._id)}
+                        className="mask "
                         style={{ "backgroundColor": "rgba(251, 251, 251, 0.2)" }}
                     >
-                        <div style={{height:"30%"}}>
+                        <div style={{ height: "30%" }}>
 
                         </div>
-                        <button className="btn btn-danger">Xem</button>
+                        <button className="btn btn-danger">Xem chi tiết</button>
                     </div>
                     {/* <div class="card-header text-center"><em><strong>NAME OF PRODUCT</strong></em></div> */}
-                   
-                    <img style={{width:"100%", height:"300px"}}
+
+                    <img style={{ width: "100%", height: "300px" }}
                         src={product.image[currentImageIndex]}
-                        class="card-img-top imgproduct "
+                        className="card-img-top imgproduct "
                         alt="..."
                     />
-                   
-                    <div class=" card-body container" >
+
+                    <div className=" card-body container" >
                         <div className="row">
-                           <div className="col-12" style={{height: "10px"}}></div>
-                            <h5 class="card-text text-truncate col-12" ><em><strong>{product.name}</strong></em></h5>
+                            <div className="col-12" style={{ height: "10px" }}></div>
+                            <h5 className="card-text text-truncate col-12" ><em><strong>{product.name}</strong></em></h5>
                             <div className="col-2">
-                                <button type="button" class="btn btn-dark btn-floating mx-1"
+                                <button type="button" className="btn btn-dark btn-floating mx-1"
                                     onClick={() => onChangeProductImageCard(currentImageIndex - 1)}
-                                    // disabled={currentImageIndex === 0}
+                                // disabled={currentImageIndex === 0}
                                 >
-                                    <i class="fas fa-angle-left"></i>
+                                    <i className="fas fa-angle-left"></i>
                                 </button>
                             </div>
                             <div className="col-7">
-                                <div class="">
+                                <div className="">
 
                                     <strong className="text-danger">{price} Yên </strong>
                                     <br></br>
@@ -79,17 +76,17 @@ const CardProduct = (props) => {
 
                             </div>
                             <div className="col-2 ">
-                                <button type="button" class="btn btn-dark btn-floating mx-1"
+                                <button type="button" className="btn btn-dark btn-floating mx-1"
                                     onClick={() => onChangeProductImageCard(currentImageIndex + 1)}
-                                    // disabled={currentImageIndex === product.image.length - 1}
+                                // disabled={currentImageIndex === product.image.length - 1}
 
                                 >
-                                    <i class="fas fa-angle-right"></i>
+                                    <i className="fas fa-angle-right"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <div class=" container card-footer">
+                    <div className=" container card-footer">
                         <div className="row">
                             {/* <strong className="">{price} VNĐ</strong> */}
                             <div className="btn-rounded text-light  bg-info col-4" ><strong>Best Sale</strong></div>

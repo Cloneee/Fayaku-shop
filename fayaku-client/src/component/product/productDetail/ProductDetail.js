@@ -42,6 +42,10 @@ const ProductDetail = () => {
                 <div className="">
 
                     <div className="row" >
+                    <div className=" text-left col-12" style={{ height: "50px" }}>
+                                    {/* <Rate allowHalf defaultValue={product.avrating} disabled /> */}
+
+                                </div>
                         <div className="col-12  text-center bg-light">
                             <br></br>
                             <strong>TK'Shop <i class="fas fa-angle-right"></i> Đặt hàng <i class="fas fa-angle-right"></i> {product.name}</strong>

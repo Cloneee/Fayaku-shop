@@ -3,14 +3,11 @@ import { BrowserRouter as Link, useHistory } from "react-router-dom";
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProductPagination } from "../../redux/action/user/pagination/pagination";
-import { Col, Rate, Row } from 'antd';
-import PaginationHome from "./PaginationHome";
-import ImageForGetPeoduct from "./ImageForGetPeoduct";
 import CardProduct from "./CardProduct";
 import TypeProductHeader from "./TypeProductHeader"
 
 const GetProduct = (props) => {
-    let {limit,current} = props
+    let {limit,current,categoryName} = props
     const dispatch = useDispatch();
     const listProductsFromStore = useSelector((state) => state.productPagination);
     useEffect(() => {
@@ -27,15 +24,15 @@ const GetProduct = (props) => {
 
         
        
-        return <CardProduct product={product} index={index} /> 
+        return <CardProduct key={index} product={product} index={index} /> 
 
 
     })
 
     return (
         <div className="container">
-            <div className="row gy-3">
-               <TypeProductHeader />
+            <div className="row ">
+               <TypeProductHeader categoryName={categoryName} />
                 {mapproducts}
                 <div className="col-12" style={{height:"20px"}}></div>
             </div>

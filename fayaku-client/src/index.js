@@ -7,13 +7,13 @@ import { applyMiddleware, createStore } from "redux";
 import reducer from './redux/reduce/index'
 import { Provider } from 'react-redux'
 import thunk from "redux-thunk";
-const store = createStore(reducer,applyMiddleware(thunk)) 
+const store = createStore(reducer, applyMiddleware(thunk))
 
 ReactDOM.render(
-     <Provider store = {store}>
-     <React.StrictMode>
-          <App />
-     </React.StrictMode>
+     <Provider store={store}>
+          <React.StrictMode>
+               <App />
+          </React.StrictMode>
      </Provider>
      ,
      document.getElementById("root")
