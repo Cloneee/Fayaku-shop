@@ -2,23 +2,20 @@ import { BrowserRouter as Link, useHistory } from "react-router-dom";
 
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllProducts } from '../../redux/action/admin/actProduct'
-import { getOneProduct } from '../../redux/action/admin/actProduct';
-import CarouselProductImage from '../product/CarouselProductImage';
+import { getProductPagination } from "../../redux/action/user/pagination/pagination";
 import { Col, Rate, Row } from 'antd';
 import PaginationHome from "./PaginationHome";
 import ImageForGetPeoduct from "./ImageForGetPeoduct";
 import CardProduct from "./CardProduct";
 
-const GetProduct = () => {
-  
+const GetProduct = (props) => {
+    let {limit,current} = props
     const dispatch = useDispatch();
-    const listProductsFromStore = useSelector((state) => state.products);
+    const listProductsFromStore = useSelector((state) => state.productPagination);
     useEffect(() => {
+        dispatch(getProductPagination(limit,current))
 
-        dispatch(getAllProducts());
-
-    }, [])
+    }, [current])
     
   
 

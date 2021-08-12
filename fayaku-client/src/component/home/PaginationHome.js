@@ -2,15 +2,13 @@ import React, { useState } from 'react'
 
 const PaginationHome = (props) => {
   const { current, totalPage, onPageChange } = props
-  // const [curent, setcurent] = useState("")
-  // const [currentPage, setcurrentPage] = useState(1)
+ 
   let arr = [...Array(totalPage)]
   const handleOnPageChange = (newPage) => {
     if (onPageChange) {
       onPageChange(newPage)
     }
   }
-  // arr.fill(5)
 
 
 

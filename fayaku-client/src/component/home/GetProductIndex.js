@@ -5,11 +5,13 @@ import PaginationHome from './PaginationHome'
 
 
 const GetProductIndex = () => {
+    const limit = 4
     const [totalPage, settotalPage] = useState(9)
-    const [currentPage, setcurrentPage] = useState(1)
+    const [currentPage, setcurrentPage] = useState(2)
 
     const onPageChange = (current) =>{
         setcurrentPage(current)
+        console.log("currentPage:"+currentPage)
       }
     const [Activeindexstate, setActiveindexstate] = useState([' active', ' '])
     const [indexstate, setindexstate] = useState(0)
@@ -52,7 +54,7 @@ const GetProductIndex = () => {
                 </div>
                 {/* <GetProduct /> */}
                 <div class="container ">
-                    {indexstate === 0 && <GetProduct />}
+                    {indexstate === 0 && <GetProduct current={currentPage} limit={limit}/>}
                     <div className="row">
                         <div className="col-12" style={{height: "20px"}}></div>
                     </div>

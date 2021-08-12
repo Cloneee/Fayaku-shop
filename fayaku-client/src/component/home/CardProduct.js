@@ -1,4 +1,4 @@
-import { Rate } from 'antd'
+import { Button, Rate } from 'antd'
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import ImageForGetPeoduct from './ImageForGetPeoduct'
