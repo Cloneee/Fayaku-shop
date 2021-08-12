@@ -5,6 +5,7 @@ import UpdateProduct from "./component/product/updateProduct/UpdateProduct";
 import PageNotFound from "./component/PageNotFound";
 import HomePageAdmin from "./component/admin/HomePage/HomePageAdmin";
 import LoginHome from "./component/login&register/LoginHome";
+import CartHome from "./component/cart/CartHome";
 const routes = [
      { path: ["/trang-chu","/"], component: HomePageComponent, exact: true },
      { path: "/bo-suu-tap", component: CategoryHome, exact: true },
@@ -14,8 +15,12 @@ const routes = [
      { path: ["/admin/trang-chu","/admin/"], component: HomePageAdmin, exact: true },
      { path: "/admin/login", component: HomePageAdmin, exact: true },
      { path: "/admin/san-pham/cap-nhat/:id", component: UpdateProduct, exact: true },
+     //Giohang
+     { path: "/gio-hang", component: CartHome, exact: true },
+
      //notFound & Exception
      { path: "", component: PageNotFound, exact: true },
+     
      //Note: Page not Found need stay last of array.
     
 ];

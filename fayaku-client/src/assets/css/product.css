@@ -1,8 +1,8 @@
 
 .imgproduct {
-    float: left;
+    /* float: left; */
     /* width:  100px; */
-    height: 80%;
+    /* height: 100%; */
     object-fit: cover;
 }
 .productBody{
@@ -16,15 +16,26 @@ div.productBody {
     /* border: 1px solid red; */
   }
 
-.bottomCardBlue{
-  height: 20px;
-  background-color: #5cc6ba;
+.headerFirstTitle{
+  height: 50px;
+  background-color: #e74c3c;
   color: white;
-  text-align: center;
-  border: 0.5px solid;
+  
+  /* border: 0.5px solid; */
   padding-bottom: 1px;
   /* margin-bottom: 1px; */
-  border-radius: 25px;
+  /* border-radius: 25px; */
+  
+}
+.headerSecondTitle{
+  height: 35px;
+  background-color: #ffffff;
+  color: white;
+  
+  /* border: 0.5px solid; */
+  padding-bottom: 1px;
+  /* margin-bottom: 1px; */
+  /* border-radius: 25px; */
   
 }
 .bgColorGray{

@@ -5,14 +5,14 @@ import PaginationHome from './PaginationHome'
 
 
 const GetProductIndex = () => {
-    const limit = 4
+    const limit = 3
     const [totalPage, settotalPage] = useState(9)
     const [currentPage, setcurrentPage] = useState(2)
 
-    const onPageChange = (current) =>{
+    const onPageChange = (current) => {
         setcurrentPage(current)
-        console.log("currentPage:"+currentPage)
-      }
+        console.log("currentPage:" + currentPage)
+    }
     const [Activeindexstate, setActiveindexstate] = useState([' active', ' '])
     const [indexstate, setindexstate] = useState(0)
     // const [indexTabstate, setindexTabstate] = useState(-1)
@@ -54,18 +54,21 @@ const GetProductIndex = () => {
                 </div>
                 {/* <GetProduct /> */}
                 <div class="container ">
-                    {indexstate === 0 && <GetProduct current={currentPage} limit={limit}/>}
+                    {indexstate === 0 && <GetProduct current={currentPage} limit={limit} />}
+                    {indexstate === 0 && <GetProduct current={currentPage} limit={limit} />}
+                   {indexstate === 0 && <GetProduct current={currentPage} limit={limit} />}
+
                     <div className="row">
-                        <div className="col-12" style={{height: "20px"}}></div>
+                        <div className="col-12" style={{ height: "20px" }}></div>
                     </div>
                     <div className="row">
                         <div className="col-12 d-flex justify-content-center">
-                        <PaginationHome totalPage={totalPage} current={currentPage} onPageChange = {onPageChange}/>
+                            <PaginationHome totalPage={totalPage} current={currentPage} onPageChange={onPageChange} />
 
                         </div>
                     </div>
                 </div>
-                
+
             </div>
 
 

@@ -31,24 +31,29 @@ const CardProduct = (props) => {
     }
     return (
         <>
-            <div className="col-lg-3 col-sm-4 d-flex hover-overlay" type="button" data-mdb-toggle="tooltip"
+            <div className="col-xl-3 col-lg-6 col-sm-4 d-flex hover-overlay  " type="button" data-mdb-toggle="tooltip"
                 title={product.name} >
                 <div class={indexMouse === index ? "card  hover-shadow " : "card  shadow-5"} onMouseEnter={() => mouseEnterOnProduct(index)}>
                     <div  onClick={()=>productOnClick(product._id)}
-                        class="mask"
+                        class="mask "
                         style={{ "backgroundColor": "rgba(251, 251, 251, 0.2)" }}
-                    ></div>
-                    {/* <div class="card-header text-center"><em><strong>NAME OF PRODUCT</strong></em></div> */}
+                    >
+                        <div style={{height:"30%"}}>
 
-                    <img
+                        </div>
+                        <button className="btn btn-danger">Xem</button>
+                    </div>
+                    {/* <div class="card-header text-center"><em><strong>NAME OF PRODUCT</strong></em></div> */}
+                   
+                    <img style={{width:"100%", height:"300px"}}
                         src={product.image[currentImageIndex]}
                         class="card-img-top imgproduct "
                         alt="..."
                     />
-
-
-                    <div class="card-body container">
+                   
+                    <div class=" card-body container" >
                         <div className="row">
+                           <div className="col-12" style={{height: "10px"}}></div>
                             <h5 class="card-text text-truncate col-12" ><em><strong>{product.name}</strong></em></h5>
                             <div className="col-2">
                                 <button type="button" class="btn btn-dark btn-floating mx-1"

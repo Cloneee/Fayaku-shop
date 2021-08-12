@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter as Link, NavLink } from "react-router-dom";
+import { BrowserRouter as Link, NavLink, useHistory } from "react-router-dom";
 
 import logo from '../assets/image/WTM.png'
 import { getCartFromLocalStorage } from '../redux/action/user/cart&order/cart';
 const Header = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
  
     const [indexHeader, setindexHeader] = useState(0)
     const cartFromStore = useSelector((state) => state.cart);
@@ -25,10 +26,9 @@ const Header = () => {
         console.log('xx' + valueHeaderClass + indexHeader)
 
     }
-    useEffect(() => {
-        
-       
-    }, [])
+    const handleCartButtonOnClick= () =>{
+        history.push('/gio-hang')
+    }
 
 
 
@@ -39,7 +39,7 @@ const Header = () => {
 
           
 
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
                 <div class="container-fluid">
                     <button
                         class="navbar-toggler"
@@ -84,9 +84,9 @@ const Header = () => {
                     </div>
 
                     <div class="d-flex align-items-center">
-                        <a class="text-reset me-3" href="#">
+                        <a class="text-reset me-3 " onClick={()=>handleCartButtonOnClick()}  >
                             <i class="fas fa-shopping-cart"></i>
-                            {cartFromStore===null ? <span class="badge rounded-pill badge-notification bg-danger">x</span>
+                            {cartFromStore===null ? <span class="badge rounded-pill badge-notification bg-danger">0</span>
                                 : <span class="badge rounded-pill badge-notification bg-danger">{cartFromStore.length}</span>
                             }
                         </a>

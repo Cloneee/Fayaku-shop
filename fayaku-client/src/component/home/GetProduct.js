@@ -7,6 +7,7 @@ import { Col, Rate, Row } from 'antd';
 import PaginationHome from "./PaginationHome";
 import ImageForGetPeoduct from "./ImageForGetPeoduct";
 import CardProduct from "./CardProduct";
+import TypeProductHeader from "./TypeProductHeader"
 
 const GetProduct = (props) => {
     let {limit,current} = props
@@ -34,7 +35,9 @@ const GetProduct = (props) => {
     return (
         <div className="container">
             <div className="row gy-3">
+               <TypeProductHeader />
                 {mapproducts}
+                <div className="col-12" style={{height:"20px"}}></div>
             </div>
 
         </div>
