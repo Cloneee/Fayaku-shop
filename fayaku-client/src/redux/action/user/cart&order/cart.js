@@ -9,7 +9,7 @@ export const setCartToStore = (cart) => {
     };
 };
 export const getCartFromLocalStorage = (cartArray) => {
-  
+    
     return (dispatch) => {
             
         dispatch(setCartToStore(cartArray));

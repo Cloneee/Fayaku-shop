@@ -1,7 +1,6 @@
 import axios from "axios";
 import { SET_ALL_CATEGORIES,SET_ONE_CATEGORY } from "../../constants/types";
 export const setOneCategoryToStore = (category) => {
-    console.log("set to store")
     return {
         type: SET_ONE_CATEGORY,
         category,

@@ -4,7 +4,7 @@ import ProductDetail from "./component/product/productDetail/ProductDetail";
 import UpdateProduct from "./component/product/updateProduct/UpdateProduct";
 import PageNotFound from "./component/PageNotFound";
 import HomePageAdmin from "./component/admin/HomePage/HomePageAdmin";
-import LoginHome from "./component/login&register/LoginHome";
+import LoginHome from "./component/login&register/Login&RegisterHome";
 import CartHome from "./component/cart/CartHome";
 const routes = [
      { path: ["/trang-chu","/"], component: HomePageComponent, exact: true },
