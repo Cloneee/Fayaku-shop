@@ -5,14 +5,14 @@ import categories from "./user/category/userGetAllCategories"
 import categoryByID from "./user/category/userGetCategoryById"
 import suppliers from "./user/supplier/userGetAllSuppliers"
 import supplierByID from "./user/supplier/userGetSupplierById"
-import userLoginData from "./user/login&register/login"
+import loginDataUser from "./user/login&register/login"
 import productPagination from "./user/pagination/pagination"
 import cart from "./user/cart&order/cart"
 const reducer = combineReducers({
    products,productByID,
    categories,categoryByID,
    suppliers,supplierByID,
-   userLoginData,
+   loginDataUser,
    productPagination,
    cart,
 

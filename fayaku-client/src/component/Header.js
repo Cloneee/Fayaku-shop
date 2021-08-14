@@ -11,7 +11,7 @@ const Header = () => {
     const [indexHeader, setindexHeader] = useState(0)
     const cartFromStore = useSelector((state) => state.cart);
     // if (cartFromStore.length>0) dispatch(getCartFromLocalStorage(2))
- 
+    const user = useSelector(state => state.loginDataUser)
     
 
 
@@ -78,6 +78,11 @@ const Header = () => {
                                     <strong>Khác</strong>
                                 </NavLink>
                             </li>
+                            <li>
+                                <NavLink to="/faq3" className="nav-link" activeClassName="nav-link active">
+                                    <strong>{user.length}</strong>
+                                </NavLink>
+                            </li>
 
 
                         </ul>
@@ -107,7 +112,7 @@ const Header = () => {
                             aria-labelledby="navbarDropdownMenuLink"
                         >
                             <li>
-                                <a className="dropdown-item" href="#">Some news</a>
+                                <a className="dropdown-item" href="#">xxx</a>
                             </li>
                             <li>
                                 <a className="dropdown-item" href="#">Another news</a>
@@ -117,7 +122,8 @@ const Header = () => {
                             </li>
                         </ul>
 
-                       <HeaderNotLoggedYet/>
+                       {user.code===1  ? <HeaderLogged/> : <HeaderNotLoggedYet/>}
+                       {/* <HeaderNotLoggedYet /> */}
                     </div>
                 </div>
             </nav>

@@ -1,19 +1,25 @@
 import { useFormik } from 'formik'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { facebookProvider, githubProvider, googleProvider } from '../../config/authMethod'
 import { getLoginDataUser } from '../../redux/action/user/login&register/userLogin'
 import socalMediaAuth from "../../services/oauth"
 import * as Yup from 'yup';
 
 const Login = () => {
+    const history = useHistory()
     const handleLoginWithSocialMedia = async (provider) => {
+        
         const res = await socalMediaAuth(provider)
         console.log(res)
+        dispath(getLoginDataUser(res))
+
+
     }
     const dispath = useDispatch()
-    const  [user, setuser] = useState(useSelector(state => state.userLoginData))
+    const [typeOfLogin, settypeOfLogin] = useState(-1)
+    const user = useSelector(state => state.loginDataUser)
 
     const formik = useFormik({
         initialValues: {
@@ -31,10 +37,10 @@ const Login = () => {
                 .required('Mật khẩu là bắt buộc'),
         }),
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+          //  alert(JSON.stringify(values, null, 2));
           
-            dispath(getLoginDataUser(values))
-            
+          dispath(getLoginDataUser(values))
+            //console.log(user)
 
         },
     });
@@ -111,17 +117,19 @@ const Login = () => {
 
                         <div class="col-md-6 d-flex justify-content-center">
 
-                            <a href="#!">Quên mật khẩu?  {user.length}</a>
+                            <a href="#!">Quên mật khẩu?  </a>
                         </div>
                     </div>
                     <div class="text-center ">
                         <button type="submit" class="btn btn-primary " >Đăng nhập</button>
                     </div>
+                   
                     <div class="text-center">
                         {/* <p>Not a member? <Link to="/register">Register</Link></p> */}
                     </div>
+                    {JSON.stringify(user,null,2)}
                 </form>
-               
+                                {user.code===1  ? history.push("/trang-chu"): null}
             </div>
 
         </>

@@ -2,7 +2,6 @@ import axios from "axios";
 import { SET_ALL_PRODUCTS,SET_ONE_PRODUCT ,SET_MESSAGE_ADD_PRODUCT} from "../../constants/types";
 import { ONE_PRODUCT_API,ALL_PRODUCT_API } from "../../constants/api";
 export const setOneProductToStore = (product) => {
-    console.log("set to store")
     return {
         type: SET_ONE_PRODUCT,
         product,
