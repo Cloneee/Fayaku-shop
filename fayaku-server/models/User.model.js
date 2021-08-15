@@ -10,6 +10,7 @@ const UserSchema = mongoose.Schema({
     phone: {
         type: String,
         required: true,
+        unique: true,
         validate: /^\d{10}$/
     },
     password:{
@@ -30,8 +31,15 @@ const UserSchema = mongoose.Schema({
         default: 'https://st3.depositphotos.com/4111759/13425/v/380/depositphotos_134255588-stock-illustration-empty-photo-of-male-profile.jpg'
     },
     cart:[{
-        productId: String,
+        productId: {
+            type: mongoose.Types.ObjectId,
+            ref: 'Product'
+        },
         quantity: Number
+    }],
+    order:[{
+        type: mongoose.Types.ObjectId,
+        ref: 'Order'
     }],
     role: {
         type: String,
@@ -40,10 +48,13 @@ const UserSchema = mongoose.Schema({
         default: 'user'
     },
     addressList:[{
-        name: String,
-        phone: String,
-        address: String
-    }]
+        name: String, 
+    }],
+    status: {
+        type: Number,
+        enum: [0,1,2],
+        default: 1
+    }
 })
 
 module.exports = mongoose.model('User', UserSchema)

@@ -41,13 +41,30 @@ Router.get('/products', async (req, res) => {
         .where('price').gte(pricemin).lte(pricemax)
         .where('avrating').gte(ratingmin).lte(ratingmax)
         .skip((page-1)*limit)
-    return res.status(200).json(products)
+    let totalProducts = await ProductModel.countDocuments(filter)
+        .where('price').gte(pricemin).lte(pricemax)
+        .where('avrating').gte(ratingmin).lte(ratingmax)
+    let totalPages = totalProducts%limit==0? totalProducts/limit : Math.floor(totalProducts/limit)+1
+
+    return res.status(200).json({
+        totalProducts: totalProducts,
+        totalPages: totalPages,
+        products: products
+    })
 })
 
 Router.get('/product/:id', async (req, res) => {
     const { id } = req.params
     let product = await ProductModel.findById(id)
     res.status(200).json(product)
+})
+
+Router.get('/product/ids', async (res,req)=>{
+    let ids = req.body.ids
+
+
+
+    res.status(200).json(products)
 })
 
 Router.post('/product', async (req, res) => {
@@ -70,13 +87,20 @@ Router.post('/product', async (req, res) => {
     }
 })
 
+
+// Wait for auth
 Router.put('/product/:id/rating', async (req,res)=>{
     const id = req.params.id
-    let rating = req.body.rating? _.toNumber(req.body.rating) : 0
-    let product = await ProductModel.findById(id)
-    product.rating.push(rating)
-    product.save()
-    res.status(200).json({code: 1, message: 'Success rating'})
+    let rating = req.body.rating? _.toNumber(req.body.rating) : null
+    if (rating){
+        let product = await ProductModel.findById(id)
+        // product.avrating = product.count
+        product.save()
+        return res.status(200).json({code: 1, message: 'Success rating'})
+    }
+    else {
+        return res.status(400).json({code: 0, message: 'Rating invalid'})
+    }
 })
 
 module.exports = Router

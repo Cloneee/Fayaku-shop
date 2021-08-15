@@ -1,7 +1,7 @@
 GET http://localhost:8000/api/products
 
 ###
-GET http://localhost:8000/api/products?limit=3&page=4
+GET http://localhost:8000/api/products?limit=4
 
 ###
 GET http://localhost:8000/api/products
@@ -24,11 +24,11 @@ GET http://localhost:8000/api/product/6107af929e9d7f3a14e44541
 POST http://localhost:8000/auth/register
 Content-Type: application/x-www-form-urlencoded
 
-email=newemail@gmail.com
+email=quynh.kha@ninh.com
 &password=123456789
-&fullname=Hoàng Lạc Phúc
+&fullname=Xuân Huỳnh
 &sex=male
-&phone=0907555464
+&phone=0975963892
 
 ###
 POST http://localhost:8000/auth/login
@@ -38,10 +38,9 @@ email=newemail@gmail.com
 &password=123456789
 
 ###
-GET http://localhost:8000/api/products?pricemax=10000&limit=3&
+GET http://localhost:8000/api/products?pricemax=10000&limit=3
+
 
 ###
-PUT http://localhost:8000/api/product/6107b0899e9d7f3a14e44553/rating
+GET http://localhost:8000/api/test
 Content-Type: application/x-www-form-urlencoded
-
-rating=5

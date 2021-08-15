@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const _ = require('lodash')
 
 const ProductSchema = mongoose.Schema({
     name: {
@@ -23,25 +22,18 @@ const ProductSchema = mongoose.Schema({
     image:[String],
     status: Number,
     description: String,
-    rating:{
-        type: [Number],
-        enum: [1,2,3,4,5],
-        default: [5]
-    },
+    // countRate:{
+    //     type: Number,
+    //     default: 1
+    // },
     avrating: {
-        type: Number
-    }
+        type: Number,
+    },
+    comments: [{
+        userId: mongoose.Types.ObjectId,
+        rating: Number,
+        comment: String
+    }]
 })
-
-ProductSchema.post("save", async function (doc, next) {
-    try {
-      let data = await doc
-        .model("Product")
-        .findOneAndUpdate({ _id: doc._id }, { avrating: _.mean(doc.rating) });
-    } catch (error) {
-      console.log("get -> error", error);
-      next(error);
-    }
-});
 
 module.exports = mongoose.model('Product', ProductSchema)
