@@ -1,12 +1,13 @@
 import {SET_PRODUCT_PAGINATION} from "../../../constants/types"
 
-let inittial = []
+let inittial ={}
 let reducer = (state = inittial,action ) =>{
     let newState = {...state}
 	let {type,productPagination} = action;
 	if(type===SET_PRODUCT_PAGINATION){
-        
+    
 		newState = productPagination
+		     console.log(newState)
 		return newState;
 	}
 	return state
