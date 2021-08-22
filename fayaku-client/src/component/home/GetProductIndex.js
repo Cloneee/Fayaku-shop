@@ -44,8 +44,8 @@ const GetProductIndex = () => {
                 {/* <GetProduct /> */}
                 <div className="container ">
                      <GetProduct current={currentPage} limit={limit} categoryName="SẮP RA MẮT" />
-                     <GetProduct current={currentPage} limit={limit} categoryName="BEST SALE" />
-                    <GetProduct current={currentPage} limit={limit} categoryName="SOMETHING ELSE" />
+                     {/* <GetProduct current={currentPage} limit={limit} categoryName="BEST SALE" />
+                    <GetProduct current={currentPage} limit={limit} categoryName="SOMETHING ELSE" /> */}
 
                     <div className="row">
                         <div className="col-12" style={{ height: "20px" }}></div>

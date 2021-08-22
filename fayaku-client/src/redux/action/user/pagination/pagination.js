@@ -3,6 +3,7 @@ import { SET_PRODUCT_PAGINATION } from "../../../constants/types";
 import { PRODUCT_PAGINATION_API } from "../../../constants/api";
 
 export const setProductPaginationToStore = (productPagination) => {
+    // console.log(productPagination)
     
     return {
         type: SET_PRODUCT_PAGINATION,
@@ -16,7 +17,7 @@ export const getProductPagination = (limit,page) => {
         return axios
             .get(url)
             .then((res) => {
-                
+                // console.log(res.data)
                 dispatch(setProductPaginationToStore(res.data));
             })
             .catch((err) => {
