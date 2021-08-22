@@ -15,9 +15,13 @@ const ProductSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    sale:{
+    sell:{
         type: Number,
         default: 1
+    },
+    sale: {
+        type: Number,
+        default: 0
     },
     image:[String],
     status: Number,
