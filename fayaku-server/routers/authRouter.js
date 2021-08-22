@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt')
 const UserModel = require('../models/User.model')
 
 function genJWT (email){
-    return jwt.sign({email}, process.env.JWT_SECRET, {expiresIn: '1800s'})
+    return jwt.sign({email}, process.env.JWT_SECRET, {expiresIn: '1y'})
 }
 
 Router.post('/register', async (req, res) => {
@@ -58,6 +58,21 @@ Router.post('/login', async (req, res) => {
                 res.status(404).json({code: 0, message: 'Email not exists'})
             }
         })
+})
+
+Router.get('/info', async (req,res)=>{
+    let {email, id} = req.body
+    if (email){
+        UserModel.findOne({email}).select('avatar email fullname sex cart')
+            .then(doc => {
+                res.send(doc)
+            })
+    } else {
+        UserModel.findById(id).select('avatar email fullname sex cart')
+            .then(doc =>{
+                res.send(doc)
+            })
+    }
 })
 
 module.exports = Router

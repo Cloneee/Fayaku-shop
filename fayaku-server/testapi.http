@@ -42,5 +42,18 @@ GET http://localhost:8000/api/products?pricemax=10000&limit=3
 
 
 ###
-GET http://localhost:8000/api/test
+GET http://localhost:8000/api/products/ids
 Content-Type: application/x-www-form-urlencoded
+
+ids=6107af929e9d7f3a14e44541,6107af9f9e9d7f3a14e44543,6107afaf9e9d7f3a14e44545,6107afc89e9d7f3a14e44549
+
+###
+GET http://localhost:8000/auth/info
+Content-Type: application/x-www-form-urlencoded
+
+email=newemail@gmail.com
+###
+GET http://localhost:8000/auth/info
+Content-Type: application/x-www-form-urlencoded
+
+id=6109639bae5d163868e8c450
