@@ -63,12 +63,20 @@ Router.get('/product/:id', async (req, res) => {
     res.status(200).json(product)
 })
 
-Router.get('/product/ids', async (res, req) => {
-    let ids = req.body.ids
-
-
-
-    res.status(200).json(products)
+Router.get('/products/ids', async (req, res) => {
+    try{
+        let ids = req.body.ids
+        if (ids){
+            ids = ids.split(',')
+            let products = await ProductModel.find({ '_id': { $in: ids } });
+            return res.status(200).json(products)
+        } else{
+            return res.status(400).json({code: 0, message: 'Missing ids'})
+        }
+    }
+    catch (err){
+        console.log(err)
+    }
 })
 
 Router.post('/product', async (req, res) => {
