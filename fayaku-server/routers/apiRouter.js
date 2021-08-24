@@ -2,6 +2,8 @@ const express = require('express')
 const Router = express.Router()
 const _ = require('lodash')
 const ProductModel = require('../models/Product.model')
+const { checkUser } = require('../middlewares/auth')
+const UserModel = require('../models/User.model')
 
 Router.get('/', (req, res) => {
     res.json({ code: 1, message: 'Welcome to API' })
@@ -49,7 +51,7 @@ Router.get('/products', async (req, res) => {
         .where('price').gte(pricemin).lte(pricemax)
         .where('avrating').gte(ratingmin).lte(ratingmax)
     let totalPages = totalProducts % limit == 0 ? totalProducts / limit : Math.floor(totalProducts / limit) + 1
-    
+
     return res.status(200).json({
         totalProducts: totalProducts,
         totalPages: totalPages,
@@ -64,17 +66,17 @@ Router.get('/product/:id', async (req, res) => {
 })
 
 Router.get('/products/ids', async (req, res) => {
-    try{
+    try {
         let ids = req.body.ids
-        if (ids){
+        if (ids) {
             ids = ids.split(',')
             let products = await ProductModel.find({ '_id': { $in: ids } });
             return res.status(200).json(products)
-        } else{
-            return res.status(400).json({code: 0, message: 'Missing ids'})
+        } else {
+            return res.status(400).json({ code: 0, message: 'Missing ids' })
         }
     }
-    catch (err){
+    catch (err) {
         console.log(err)
     }
 })
@@ -112,6 +114,64 @@ Router.put('/product/:id/rating', async (req, res) => {
     }
     else {
         return res.status(400).json({ code: 0, message: 'Rating invalid' })
+    }
+})
+
+// Cart session
+Router.get('/cart', checkUser, async (req, res) => {
+    try {
+        res.status(200).json({ cart: res.locals.user.cart })
+    } catch (error) {
+        res.status(400).json({ code: 0, message: 'Error while checking cart' })
+    }
+})
+
+Router.post('/cart', checkUser, async (req, res) => {
+    try {
+        let { productId, quantity } = req.body
+        quantity = parseInt(quantity)
+        if (productId && quantity != NaN) {
+            function itemExist(id) {
+                return res.locals.user.cart.some(function (el) {
+                    return el.productId == id;
+                })
+            }
+            let user = await UserModel.findById(res.locals.user._id)
+            if (itemExist(productId)) {
+                let indexProduct = user.cart.findIndex(x => x.productId == productId)
+                user.cart[indexProduct].quantity += quantity
+            } else {
+                user.cart.push({ productId: productId, quantity: parseInt(quantity) })
+            }
+            user.save()
+            res.status(200).json({ code: 1, message: `Success add item`, item: productId })
+        } else {
+            res.status(400).json({ code: 0, message: 'Error while adding to cart' })
+        }
+    } catch (error) {
+        res.status(400).json({ code: 0, message: 'Error while adding to cart' })
+    }
+})
+
+Router.delete('/cart', checkUser, async (req,res)=>{
+    try {
+        let {productId} = req.body
+        function itemExist(id) {
+            return res.locals.user.cart.some(function (el) {
+                return el.productId == id;
+            })
+        }
+        if (itemExist(productId)){
+            let user = await UserModel.findById(res.locals.user._id)
+            let indexProduct = user.cart.findIndex(x => x.productId == productId)
+            user.cart.splice(indexProduct, 1)
+            user.save()
+            res.status(200).json({code: 1, message: 'Product deleted'})
+        } else{
+            res.status(400).json({code: 0, message: 'Product already delete'})
+        }
+    } catch (error) {
+        res.status(400).json({ code: 0, message: 'Error while delete in cart' })
     }
 })
 
