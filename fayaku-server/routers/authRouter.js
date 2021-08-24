@@ -3,6 +3,7 @@ const Router = express.Router()
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
+const authority = require('../middlewares/auth')
 
 const UserModel = require('../models/User.model')
 
@@ -48,8 +49,8 @@ Router.post('/login', async (req, res) => {
                     .then((isEqual)=>{
                         if (isEqual){
                             let jwt = genJWT(email)
-                            let rt = 'refresh token placeholder'
-                            res.status(200).json({code: 1, message: 'Login success', jwt: jwt, rt: rt})
+                            res.cookie('jwt', jwt, { maxAge: 1000*60*60*24*30 /*1 tháng*/, httpOnly: true })
+                            res.status(200).json({code: 1, message: 'Login success', jwt: jwt})
                         } else {
                             res.status(406).json({code: 0, message: 'Wrong password, please try again'})
                         }

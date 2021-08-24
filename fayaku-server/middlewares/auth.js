@@ -55,7 +55,7 @@ const checkUser =  (req,res,next) =>{
                 next()
             }
             else{
-                let user = await sinhvientModel.findOne({mssv: decodedToken.mssv})
+                let user = await UserModel.findOne({mssv: decodedToken.mssv})
                 res.locals.user = user || {mssv: 000}
                 next()
             }

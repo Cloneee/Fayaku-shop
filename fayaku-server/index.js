@@ -5,10 +5,13 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
+const path = require('path');
 
 require('dotenv/config')
 
 app.use(cors())
+app.use(cookieParser())
+app.use(express.static(__dirname + '/public'));
 
 const adminRouter = require('./routers/adminRouter')
 const authRouter = require('./routers/authRouter')
