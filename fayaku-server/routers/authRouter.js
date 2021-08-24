@@ -3,7 +3,7 @@ const Router = express.Router()
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-const authority = require('../middlewares/auth')
+const { checkUser } = require('../middlewares/auth')
 
 const UserModel = require('../models/User.model')
 
@@ -61,18 +61,11 @@ Router.post('/login', async (req, res) => {
         })
 })
 
-Router.get('/info', async (req,res)=>{
-    let {email, id} = req.body
-    if (email){
-        UserModel.findOne({email}).select('avatar email fullname sex cart')
-            .then(doc => {
-                res.send(doc)
-            })
-    } else {
-        UserModel.findById(id).select('avatar email fullname sex cart')
-            .then(doc =>{
-                res.send(doc)
-            })
+Router.get('/info', checkUser, async (req,res)=>{
+    try {
+        res.status(200).json(res.locals.user)
+    } catch (error) {
+        res.status(400).json({code: 0, message: 'Error while get info'})
     }
 })
 
