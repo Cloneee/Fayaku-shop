@@ -128,27 +128,35 @@ Router.get('/cart', checkUser, async (req, res) => {
 
 Router.post('/cart', checkUser, async (req, res) => {
     try {
-        let { productId, quantity } = req.body
-        quantity = parseInt(quantity)
-        if (productId && quantity != NaN) {
-            function itemExist(id) {
-                return res.locals.user.cart.some(function (el) {
-                    return el.productId == id;
-                })
+        let data = req.body.data
+        let user = await UserModel.findById(res.locals.user._id)
+        data.map( async product =>{
+            let productId = product.productId,
+                quantity = product.quantity
+            if (productId && _.isNumber(quantity)) {
+                function itemExist(id) {
+                    return res.locals.user.cart.some(function (el) {
+                        return el.productId == id;
+                    })
+                }
+
+                if (itemExist(productId)) {
+                    let indexProduct = user.cart.findIndex(x => x.productId == productId)
+                    user.cart[indexProduct].quantity += quantity
+                    if (user.cart[indexProduct].quantity<=0){
+                        user.cart.splice(indexProduct, 1)
+                    }
+                } else {
+                    if (quantity>0){
+                        user.cart.push({ productId: productId, quantity: parseInt(quantity) })
+                    }
+                }
             }
-            let user = await UserModel.findById(res.locals.user._id)
-            if (itemExist(productId)) {
-                let indexProduct = user.cart.findIndex(x => x.productId == productId)
-                user.cart[indexProduct].quantity += quantity
-            } else {
-                user.cart.push({ productId: productId, quantity: parseInt(quantity) })
-            }
-            user.save()
-            res.status(200).json({ code: 1, message: `Success add item`, item: productId })
-        } else {
-            res.status(400).json({ code: 0, message: 'Error while adding to cart' })
-        }
+        })
+        user.save()
+        res.status(200).json({ code: 1, message: `Success add item` })
     } catch (error) {
+        console.log(error);
         res.status(400).json({ code: 0, message: 'Error while adding to cart' })
     }
 })
