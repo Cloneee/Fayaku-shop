@@ -69,6 +69,12 @@ Router.post('/login', async (req, res) => {
     }
 })
 
+Router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
+Router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), async (req, res) => {
+    let user = req.user
+    res.json(user)
+})
+
 Router.get('/info', checkUser, async (req, res) => {
     try {
         res.status(200).json(res.locals.user)

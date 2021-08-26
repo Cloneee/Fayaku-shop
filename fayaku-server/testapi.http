@@ -57,3 +57,18 @@ GET http://localhost:8000/auth/info
 Content-Type: application/x-www-form-urlencoded
 
 id=6109639bae5d163868e8c450
+
+###
+POST http://localhost:8000/api/cart
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5ld2VtYWlsQGdtYWlsLmNvbSIsImlhdCI6MTYyOTg0NDQ4MSwiZXhwIjoxNjYxNDAyMDgxfQ.usB9bpVxLEI8t2RBI1oWHJWB9E_rXbIqFLWwfjARi-g; Max-Age=2592000; Path=/; Expires=Thu, 23 Sep 2021 22:34:41 GMT; HttpOnly
+Content-Type: application/x-www-form-urlencoded
+
+productId=6107af929e9d7f3a14e44541
+&quantity=1
+
+###
+DELETE http://localhost:8000/api/cart
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5ld2VtYWlsQGdtYWlsLmNvbSIsImlhdCI6MTYyOTg0NDQ4MSwiZXhwIjoxNjYxNDAyMDgxfQ.usB9bpVxLEI8t2RBI1oWHJWB9E_rXbIqFLWwfjARi-g; Max-Age=2592000; Path=/; Expires=Thu, 23 Sep 2021 22:34:41 GMT; HttpOnly
+Content-Type: application/x-www-form-urlencoded
+
+productId=6107af929e9d7f3a14e44541

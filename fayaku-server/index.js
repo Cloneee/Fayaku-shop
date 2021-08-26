@@ -1,23 +1,25 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
 const passport = require('passport')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const path = require('path');
 
 require('dotenv/config')
+require('./passport-setup')
 
 app.use(cors())
 app.use(cookieParser())
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'))
+app.use(passport.initialize())
+
 
 const adminRouter = require('./routers/adminRouter')
 const authRouter = require('./routers/authRouter')
 const apiRouter = require('./routers/apiRouter')
 
-port = process.env.PORT || 8000
+let port = process.env.PORT || 8000
 //Setup database
 const uri = 'mongodb+srv://user:user@learningmongo1.89tk5.gcp.mongodb.net/fayakuShop?retryWrites=true'
 mongoose.Promise = global.Promise
