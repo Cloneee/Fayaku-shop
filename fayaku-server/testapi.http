@@ -13,8 +13,9 @@ Content-Type: application/x-www-form-urlencoded
 
 ###
 POST http://localhost:8000/api/product
-Content-Type: application/x-www-form-urlencoded
+Content-Type: application/json
 
+{"name":"初音ミク Land of the Eternal (はつねみく らんど おぶ じ えたーなる)","description":"『キャラクター・ボーカル・シリーズ01 初音ミク』より、「初音ミク」を、北野天満宮を舞台に日本の伝統文化とアート、音楽、食を融合させたイベント「KYOTO NIPPON FESTIVAL 2019」のキービジュアル衣装でスケールフィギュア化！衣装原案・メインビジュアルを手がけたイラストレーターRella氏の描き下ろしイラストを、清楚で繊細なビジュアルイメージをそのままに立体化いたしました。風を受けて美しくなびくツインテールや精緻に再現された衣装の造形に是非ご注目ください。髪の毛・衣装には上品なパール感のある彩色を施しています。“常世”の世界から微笑みかけてくれるミクさんを是非お手元でもお楽しみください。","brand":"グッドスマイルカンパニー","category":"1/7スケールフィギュア","price":29800,"release":"2023/07","detail":"ABS&PVC 製塗装済み完成品・1/7スケール・専用台座付属・全高：約250mm","image":["https://images.goodsmile.info/cgm/images/product/20210820/11680/89060/large/3cea941a4c76071ff9fcfd1214708742.jpg","https://images.goodsmile.info/cgm/images/product/20210820/11680/89061/large/5ba10c355e1da4a03bdfc79b70f834f6.jpg","https://images.goodsmile.info/cgm/images/product/20210820/11680/89062/large/d80af370db4deb5f774c7552f6d24c7c.jpg","https://images.goodsmile.info/cgm/images/product/20210820/11680/89063/large/2f218d739a520c6eeb58c9fb393e29c3.jpg","https://images.goodsmile.info/cgm/images/product/20210820/11680/89064/large/dfe7e64ffc5767a8154a3ec054089603.jpg","https://images.goodsmile.info/cgm/images/product/20210820/11680/89065/large/c5373301a1766baf8cd245e9a6883e90.jpg","https://images.goodsmile.info/cgm/images/product/20210820/11680/89066/large/35f974478650ad81daea3d109986b26a.jpg","https://images.goodsmile.info/cgm/images/product/20210820/11680/89067/large/f94a5b1c53adb87136987c9b77cc3f6b.jpg","https://images.goodsmile.info/cgm/images/product/20210820/11680/89068/large/2ca5193a700792eea8b3af75f5e29fd5.jpg"]}
 
 
 ###
@@ -72,3 +73,6 @@ Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5ld2VtYWlsQGdtYWl
 Content-Type: application/x-www-form-urlencoded
 
 productId=6107af929e9d7f3a14e44541
+
+###
+GET http://localhost:8000/api/minisearch?keywords=ねんどろいど
