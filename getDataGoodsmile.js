@@ -1,4 +1,13 @@
-let requestString = ''
+// ==UserScript==
+// @name        Crawling Data
+// @namespace   Violentmonkey Scripts
+// @match       https://www.goodsmile.info/ja/product/*
+// @grant       none
+// @version     1.2
+// @author      Huy da Clone
+// @description 8/2/2021, 3:11:50 PM
+// ==/UserScript==
+
 const copyToClipboard = str => {
     const el = document.createElement('textarea');
     el.value = str;
@@ -40,7 +49,17 @@ const getData = () => {
         detail: detail,
         image: imgString
     }
-    copyToClipboard(JSON.stringify(jsonData))
+    if (confirm('Get this product?')){
+        $.ajax({
+            type: "POST",
+            url: 'http://localhost:8000/api/product',
+            data: jsonData,
+            dataType: JSON
+          })
+        alert('Success add to db')
+    } else{
+        alert('Cancel request')
+    }
+    
 }
-
 getData()
