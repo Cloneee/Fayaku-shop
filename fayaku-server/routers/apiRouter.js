@@ -86,9 +86,6 @@ Router.post('/product', async (req, res) => {
     if (_.isEmpty(data)) {
         res.status(400).json({ code: 0, message: 'Make sure you type it all' })
     } else {
-        let tempImg = data.image
-        let imgArr = tempImg.split(',')
-        data.image = imgArr
         await ProductModel.create(data, (err) => {
             if (err) {
                 console.log(err)
@@ -101,6 +98,18 @@ Router.post('/product', async (req, res) => {
     }
 })
 
+Router.get('/search', async (req,res)=>{
+    let query = req.query.query,
+        option = req.query.option,
+        productRegex = new RegExp(query, 'i'),
+        result
+    if (option == 'mini'){
+        result = await ProductModel.find({name: productRegex}).limit(5)
+    } else{
+        result = await ProductModel.find({name: productRegex}, 'name category avrating price').limit(5)
+    }
+    res.json(result)
+})
 
 // Wait for auth
 Router.put('/product/:id/rating', async (req, res) => {

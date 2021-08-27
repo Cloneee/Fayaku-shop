@@ -15,6 +15,8 @@ const ProductSchema = mongoose.Schema({
         type: Number,
         required: true
     },
+    release: String,
+    detail: String,
     sell:{
         type: Number,
         default: 1
