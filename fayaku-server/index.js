@@ -21,11 +21,10 @@ const apiRouter = require('./routers/apiRouter')
 
 let port = process.env.PORT || 8000
 //Setup database
-const uri = 'mongodb+srv://user:user@learningmongo1.89tk5.gcp.mongodb.net/fayakuShop?retryWrites=true'
 mongoose.Promise = global.Promise
 mongoose.set('useFindAndModify', false);
 const db = mongoose.connection
-mongoose.connect(process.env.DB_CONNECTION || uri, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useCreateIndex: true })
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useCreateIndex: true })
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 //End DB Section
 
